@@ -43,7 +43,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,t
     apt-get install --no-install-recommends -y curl wget
 
 HEALTHCHECK --interval=1m --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://0.0.0.0:80/ || exit 1
+  CMD curl -f http://localhost:80/ || exit 1
 
 # Run gunicorn
 CMD ["gunicorn", "project.wsgi", "--config=gunicorn.conf.py"]
