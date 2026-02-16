@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  # IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   amd64:
@@ -30,7 +30,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ env.REGISTRY }}/adamghill/django-unicorn.com:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Call webhook
         run: |
           curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
