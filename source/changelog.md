@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.65.0
+
+- Properly escape single quotes in Unicorn.call() arguments [#773](https://github.com/adamghill/django-unicorn/pull/773) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Automatically initialize components via MutationObserver [#760](https://github.com/adamghill/django-unicorn/pull/760) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Support HTTP redirect from mount() [#767](https://github.com/adamghill/django-unicorn/pull/767) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Fix: `IndexError` when using a custom setter method with $event.target.value by [#761](https://github.com/adamghill/django-unicorn/pull/761) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Fix: correct debounce behavior with delay [#764](https://github.com/adamghill/django-unicorn/pull/764) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Fix: prevent poll from overwriting many-to-many fields [#769](https://github.com/adamghill/django-unicorn/pull/769) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+
+
+## 0.64.0
+
+- Switch to `lxml` instead of `beautifulsoup` for improved HTML parsing performance.
+- Add `unicorn:bind` as a synonym for `unicorn:model`.
+- Add [`unicorn:loading.delay`](loading-states.md#delay) modifier to prevent loading state from showing for fast actions [#754](https://github.com/adamghill/django-unicorn/pull/754) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Add [action modifier to disable](actions.md#disable) an element while an action is in-flight [#755](https://github.com/adamghill/django-unicorn/pull/755) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Add `Component` base class as an alias for `UnicornView`.
+- Fix: Set request on restored component [#753](https://github.com/adamghill/django-unicorn/pull/753).
+- Fix: Coerce component key types to handle integer/string comparisons.
+- Fix: Handle pickle error for nested components.
+- Fix: Support inherited type hints in `get_type_hints` by [#759](https://github.com/adamghill/django-unicorn/pull/759) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+- Fix: "Multiple root elements" error with `unicorn:view` and `unicorn:poll` [#668](https://github.com/adamghill/django-unicorn/pull/668) by [JohananOppongAmoateng](https://github.com/JohananOppongAmoateng).
+
+## 0.63.0
+
+- Fix: Child components would cause RecursionError when pickling by [igadmile](https://github.com/igadmile) in [#672](https://github.com/adamghill/django-unicorn/pull/672).
+
+## 0.62.0
+
+- Security fix: for CVE-2025-24370 for a class pollution vulnerability (reported by [superboy-zjc](https://github.com/superboy-zjc)).
+
+**Breaking changes**
+
+- Remove support for Python 3.8 and 3.9 because Django 5.0 has dropped support.
+
 ## 0.61.0
 
 - Add [`template_html`](views.md#template_html) to specify inline template HTML on the component.
