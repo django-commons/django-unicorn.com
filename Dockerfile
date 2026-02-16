@@ -14,6 +14,7 @@ FROM python-base as builder-base
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         curl \
+        git \
         build-essential
 
 # Install uv
