@@ -1,15 +1,19 @@
-:py:mod:`django_unicorn.views.action_parsers.call_method`
-=========================================================
+django_unicorn.views.action_parsers.call_method
+===============================================
 
 .. py:module:: django_unicorn.views.action_parsers.call_method
+
+
+
+
 
 
 Module Contents
 ---------------
 
-.. py:function:: get_origin(tp: Any) -> Optional[Any]
+.. py:data:: UnionType
 
+.. py:function:: get_origin(tp: Any) -> Any | None
 
-.. py:function:: handle(component_request: django_unicorn.views.objects.ComponentRequest, component: django_unicorn.components.UnicornView, payload: Dict)
-
+.. py:function:: handle(component_request: django_unicorn.views.request.ComponentRequest, component: django_unicorn.components.UnicornView, payload: dict)
 

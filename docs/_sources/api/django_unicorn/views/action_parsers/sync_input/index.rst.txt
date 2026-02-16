@@ -1,12 +1,13 @@
-:py:mod:`django_unicorn.views.action_parsers.sync_input`
-========================================================
+django_unicorn.views.action_parsers.sync_input
+==============================================
 
 .. py:module:: django_unicorn.views.action_parsers.sync_input
+
+
 
 
 Module Contents
 ---------------
 
-.. py:function:: handle(component_request: django_unicorn.views.objects.ComponentRequest, component: django_unicorn.components.UnicornView, payload: Dict)
-
+.. py:function:: handle(component_request: django_unicorn.views.request.ComponentRequest, component: django_unicorn.components.UnicornView, payload: dict)
 

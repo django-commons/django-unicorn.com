@@ -1,0 +1,53 @@
+django_unicorn.views.request
+============================
+
+.. py:module:: django_unicorn.views.request
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: ComponentRequest(request, component_name)
+
+   Parses, validates, and stores all of the data from the message request.
+
+
+   .. py:attribute:: body
+
+
+   .. py:attribute:: request
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: data
+
+
+   .. py:attribute:: id
+
+
+   .. py:attribute:: epoch
+
+
+   .. py:attribute:: key
+
+
+   .. py:attribute:: hash
+
+
+   .. py:attribute:: action_queue
+      :value: []
+
+
+
+   .. py:method:: validate_checksum()
+
+      Validates that the checksum in the request matches the data.
+
+      :returns: Raises `AssertionError` if the checksums don't match.
+
+
+

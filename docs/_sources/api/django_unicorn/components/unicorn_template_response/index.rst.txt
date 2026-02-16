@@ -1,7 +1,13 @@
-:py:mod:`django_unicorn.components.unicorn_template_response`
-=============================================================
+django_unicorn.components.unicorn_template_response
+===================================================
 
 .. py:module:: django_unicorn.components.unicorn_template_response
+
+
+
+
+
+
 
 
 Module Contents
@@ -10,58 +16,46 @@ Module Contents
 .. py:data:: EMPTY_ELEMENTS
    :value: ('<area>', '<base>', '<br>', '<col>', '<embed>', '<hr>', '<img>', '<input>', '<link>', '<meta>',...
 
-   
 
-.. py:function:: is_html_well_formed(html: str) -> bool
+.. py:function:: is_html_well_formed(html_content: str) -> bool
 
    Whether the passed-in HTML is missing any closing elements which can cause issues when rendering.
 
 
-.. py:function:: assert_has_single_wrapper_element(root_element: bs4.element.Tag, component_name: str) -> None
-
-   Assert that there is at least one child in the root element. And that there is only
-   one root element.
-
-
-.. py:function:: get_root_element(soup: bs4.BeautifulSoup) -> bs4.element.Tag
+.. py:function:: get_root_element(content: str) -> lxml.html.HtmlElement
 
    Gets the first tag element for the component or the first element with a `unicorn:view` attribute for a direct
    view.
 
-   :returns: BeautifulSoup tag element.
+   :returns: lxml element.
 
              Raises `Exception` if an element cannot be found.
 
 
-.. py:class:: UnsortedAttributes
+.. py:function:: assert_has_single_wrapper_element(content: str, component_name: str) -> None
 
-
-   Bases: :py:obj:`bs4.formatter.HTMLFormatter`
-
-   Prevent beautifulsoup from re-ordering attributes.
-
-   .. py:method:: attributes(tag: bs4.element.Tag)
-
-      Reorder a tag's attributes however you want.
-
-      By default, attributes are sorted alphabetically. This makes
-      behavior consistent between Python 2 and Python 3, and preserves
-      backwards compatibility with older versions of Beautiful Soup.
-
-      If `empty_boolean_attributes` is True, then attributes whose
-      values are set to the empty string will be treated as boolean
-      attributes.
-
+   Assert that there is only one root element.
 
 
 .. py:class:: UnicornTemplateResponse(template, request, *, context=None, content_type=None, status=None, charset=None, using=None, component=None, init_js=False, **kwargs)
 
-
    Bases: :py:obj:`django.template.response.TemplateResponse`
+
 
    An HTTP response class with a string as content.
 
    This content can be read, appended to, or replaced.
+
+
+   .. py:attribute:: component
+      :value: None
+
+
+
+   .. py:attribute:: init_js
+      :value: False
+
+
 
    .. py:method:: resolve_template(template)
 
@@ -69,6 +63,7 @@ Module Contents
 
       Calls the super which accepts a template object, path-to-template, or list of paths if the first
       object in the sequence is not a Template.
+
 
 
    .. py:method:: render()

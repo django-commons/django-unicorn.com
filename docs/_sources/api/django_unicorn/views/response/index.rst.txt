@@ -1,0 +1,32 @@
+django_unicorn.views.response
+=============================
+
+.. py:module:: django_unicorn.views.response
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: ComponentResponse(component: django_unicorn.components.UnicornView, component_request: django_unicorn.views.request.ComponentRequest, return_data: Any | None = None, partials: list[dict[str, Any]] | None = None)
+
+   .. py:attribute:: component
+
+
+   .. py:attribute:: component_request
+
+
+   .. py:attribute:: return_data
+      :value: None
+
+
+
+   .. py:attribute:: partials
+      :value: []
+
+
+
+   .. py:method:: get_data() -> dict[str, Any]
+
+

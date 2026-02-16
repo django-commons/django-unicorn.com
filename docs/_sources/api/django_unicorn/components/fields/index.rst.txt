@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.components.fields`
-==========================================
+django_unicorn.components.fields
+================================
 
 .. py:module:: django_unicorn.components.fields
+
+
 
 
 Module Contents
@@ -9,10 +11,9 @@ Module Contents
 
 .. py:class:: UnicornField
 
-
    Base class to provide a way to serialize a component field quickly.
 
-   .. py:method:: to_json()
 
+   .. py:method:: to_json()
 
 

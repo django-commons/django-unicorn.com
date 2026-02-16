@@ -1,17 +1,17 @@
-:py:mod:`django_unicorn.views.action_parsers`
-=============================================
+django_unicorn.views.action_parsers
+===================================
 
 .. py:module:: django_unicorn.views.action_parsers
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   call_method/index.rst
-   sync_input/index.rst
-   utils/index.rst
+   /api/django_unicorn/views/action_parsers/call_method/index
+   /api/django_unicorn/views/action_parsers/sync_input/index
+   /api/django_unicorn/views/action_parsers/utils/index
 
 

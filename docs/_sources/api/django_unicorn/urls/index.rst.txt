@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.urls`
-=============================
+django_unicorn.urls
+===================
 
 .. py:module:: django_unicorn.urls
+
+
 
 
 Module Contents
@@ -10,10 +12,6 @@ Module Contents
 .. py:data:: app_name
    :value: 'django_unicorn'
 
-   
 
 .. py:data:: urlpatterns
-   :value: ()
-
-   
 

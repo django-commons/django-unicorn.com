@@ -1,7 +1,11 @@
-:py:mod:`django_unicorn.cacher`
-===============================
+django_unicorn.cacher
+=====================
 
 .. py:module:: django_unicorn.cacher
+
+
+
+
 
 
 Module Contents
@@ -9,23 +13,42 @@ Module Contents
 
 .. py:class:: PointerUnicornView(component_cache_key)
 
+   Lightweight placeholder for UnicornView during caching.
+
+   This class is used to break circular references when pickling components.
+   It should ONLY be used during cache serialization/deserialization.
+   If this class is accessed outside of caching context, it indicates a bug.
 
 
-.. py:class:: CacheableComponent(component: django_unicorn.views.UnicornView)
+   .. py:attribute:: component_cache_key
 
+
+   .. py:attribute:: parent
+      :value: None
+
+
+
+   .. py:attribute:: children
+      :value: []
+
+
+
+.. py:class:: CacheableComponent(component: django_unicorn.components.unicorn_view.UnicornView)
 
    Updates a component into something that is cacheable/pickleable. Also set pointers to parents/children.
    Use in a `with` statement or explicitly call `__enter__` `__exit__` to use. It will restore the original component
    on exit.
 
-   .. py:method:: components() -> List[django_unicorn.views.UnicornView]
+
+   .. py:attribute:: cacheable_component
 
 
+   .. py:method:: components() -> list[django_unicorn.components.unicorn_view.UnicornView]
 
-.. py:function:: cache_full_tree(component: django_unicorn.views.UnicornView)
 
+.. py:function:: cache_full_tree(component: django_unicorn.components.unicorn_view.UnicornView)
 
-.. py:function:: restore_from_cache(component_cache_key: str, request: Optional[django.http.HttpRequest] = None) -> django_unicorn.views.UnicornView
+.. py:function:: restore_from_cache(component_cache_key: str, request: django.http.HttpRequest | None = None) -> django_unicorn.components.unicorn_view.UnicornView
 
    Gets a cached unicorn view by key, restoring and getting cached parents and children
    and setting the request.

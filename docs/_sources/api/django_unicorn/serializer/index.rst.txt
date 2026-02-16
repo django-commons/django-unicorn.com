@@ -1,45 +1,49 @@
-:py:mod:`django_unicorn.serializer`
-===================================
+django_unicorn.serializer
+=========================
 
 .. py:module:: django_unicorn.serializer
+
+
+
+
+
+
 
 
 Module Contents
 ---------------
 
 .. py:data:: PydanticBaseModel
+   :value: None
 
-   
 
 .. py:data:: django_json_encoder
 
-   
-
 .. py:exception:: JSONDecodeError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
-.. py:exception:: InvalidFieldNameError(field_name: str, data: Optional[Dict] = None)
-
+.. py:exception:: InvalidFieldNameError(field_name: str, data: dict | None = None)
 
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
-.. py:exception:: InvalidFieldAttributeError(field_name: str, field_attr: str, data: Optional[Dict] = None)
-
+.. py:exception:: InvalidFieldAttributeError(field_name: str, field_attr: str, data: dict | None = None)
 
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
-.. py:function:: dumps(data: Dict, *, fix_floats: bool = True, exclude_field_attributes: Optional[Tuple[str, Ellipsis]] = None, sort_dict: bool = True) -> str
+.. py:function:: dumps(data: Any, *, fix_floats: bool = True, exclude_field_attributes: tuple[str, Ellipsis] | None = None, sort_dict: bool = True) -> str
 
    Converts the passed-in dictionary to a string representation.
 

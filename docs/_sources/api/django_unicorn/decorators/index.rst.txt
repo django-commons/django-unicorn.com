@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.decorators`
-===================================
+django_unicorn.decorators
+=========================
 
 .. py:module:: django_unicorn.decorators
+
+
 
 
 Module Contents

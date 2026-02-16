@@ -1,7 +1,11 @@
-:py:mod:`django_unicorn.utils`
-==============================
+django_unicorn.utils
+====================
 
 .. py:module:: django_unicorn.utils
+
+
+
+
 
 
 Module Contents
@@ -9,9 +13,12 @@ Module Contents
 
 .. py:data:: function_signature_cache
 
-   
+.. py:function:: html_element_to_string(element: lxml.html.HtmlElement, **kwargs) -> str
 
-.. py:function:: generate_checksum(data: Union[bytes, str, Dict]) -> str
+   Convert an lxml element to a string with unicode encoding.
+
+
+.. py:function:: generate_checksum(data: bytes | str | dict | None) -> str
 
    Generates a checksum for the passed-in data.
 
@@ -20,12 +27,12 @@ Module Contents
    :returns: The generated checksum.
 
 
-.. py:function:: dicts_equal(dictionary_one: Dict, dictionary_two: Dict) -> bool
+.. py:function:: dicts_equal(dictionary_one: dict, dictionary_two: dict) -> bool
 
    Return True if all keys and values are the same between two dictionaries.
 
 
-.. py:function:: get_method_arguments(func) -> List[str]
+.. py:function:: get_method_arguments(func) -> list[str]
 
    Gets the arguments for a method.
 
@@ -52,7 +59,7 @@ Module Contents
    Checks whether a string is actually an integer.
 
 
-.. py:function:: create_template(template_html: Union[str, collections.abc.Callable], engine_name: Optional[str] = None) -> django.template.backends.django.Template
+.. py:function:: create_template(template_html: str | collections.abc.Callable, engine_name: str | None = None) -> django.template.backends.django.Template
 
    Create a `Template` from a string or callable.
 

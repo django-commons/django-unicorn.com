@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.errors`
-===============================
+django_unicorn.errors
+=====================
 
 .. py:module:: django_unicorn.errors
+
+
 
 
 Module Contents
@@ -9,88 +11,93 @@ Module Contents
 
 .. py:exception:: UnicornCacheError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: UnicornViewError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: ComponentLoadError(*args, locations=None, **kwargs)
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
+   .. py:attribute:: locations
+      :value: None
+
+
+
 .. py:exception:: ComponentModuleLoadError(*args, locations=None, **kwargs)
 
-
    Bases: :py:obj:`ComponentLoadError`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: ComponentClassLoadError(*args, locations=None, **kwargs)
 
-
    Bases: :py:obj:`ComponentLoadError`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: RenderNotModifiedError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: MissingComponentElementError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: MissingComponentViewElementError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: NoRootComponentElementError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: MultipleRootComponentElementError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 
 
 .. py:exception:: ComponentNotValidError
 
-
    Bases: :py:obj:`Exception`
+
 
    Common base class for all non-exit exceptions.
 

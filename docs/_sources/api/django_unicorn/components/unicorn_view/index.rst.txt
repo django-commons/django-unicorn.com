@@ -1,7 +1,13 @@
-:py:mod:`django_unicorn.components.unicorn_view`
-================================================
+django_unicorn.components.unicorn_view
+======================================
 
 .. py:module:: django_unicorn.components.unicorn_view
+
+
+
+
+
+
 
 
 Module Contents
@@ -9,75 +15,103 @@ Module Contents
 
 .. py:data:: location_cache
 
-   
-
 .. py:data:: views_cache
-
-   
 
 .. py:data:: constructed_views_cache
 
-   
-
 .. py:data:: COMPONENTS_MODULE_CACHE_ENABLED
-
-   
 
 .. py:data:: STANDARD_COMPONENT_KWARG_KEYS
 
-   
-
 .. py:function:: convert_to_snake_case(s: str) -> str
-
 
 .. py:function:: convert_to_dash_case(s: str) -> str
 
-
 .. py:function:: convert_to_pascal_case(s: str) -> str
 
-
-.. py:function:: get_locations(component_name: str) -> List[Tuple[str, str]]
-
+.. py:function:: get_locations(component_name: str) -> list[tuple[str, str]]
 
 .. py:function:: construct_component(component_class, component_id, component_name, component_key, parent, request, component_args, **kwargs)
 
    Constructs a class instance.
 
 
-.. py:class:: UnicornView(component_args: Optional[List] = None, **kwargs)
-
+.. py:class:: Component(component_args: list | None = None, **kwargs)
 
    Bases: :py:obj:`django.views.generic.base.TemplateView`
 
+
    Render a template. Pass keyword arguments from the URLconf to the context.
 
+
    .. py:attribute:: component_name
-      :type: str
+      :type:  str
       :value: ''
 
-      
+
 
    .. py:attribute:: component_key
-      :type: str
+      :type:  str
       :value: ''
 
-      
+
 
    .. py:attribute:: component_id
-      :type: str
+      :type:  str
       :value: ''
 
-      
+
 
    .. py:attribute:: component_args
-      :type: Optional[List]
+      :type:  list | None
+      :value: None
 
-      
+
 
    .. py:attribute:: component_kwargs
-      :type: Optional[Dict]
+      :type:  dict | None
+      :value: None
 
-      
+
+
+   .. py:attribute:: response_class
+
+
+   .. py:attribute:: request
+      :type:  django.http.HttpRequest
+
+
+   .. py:attribute:: parent
+      :type:  Component | None
+      :value: None
+
+
+
+   .. py:attribute:: children
+      :type:  list[Component]
+      :value: []
+
+
+
+   .. py:attribute:: calls
+      :type:  list[Any]
+      :value: []
+
+
+
+   .. py:attribute:: force_render
+      :value: False
+
+
+
+   .. py:attribute:: component_cache_key
+      :value: 'unicorn:component:'
+
+
+
+   .. py:attribute:: errors
+      :type:  dict[Any, Any]
+
 
    .. py:method:: reset()
 
@@ -87,9 +121,11 @@ Module Contents
       Add a JavaScript method name and arguments to be called after the component is rendered.
 
 
+
    .. py:method:: mount()
 
       Hook that gets called when the component is first created.
+
 
 
    .. py:method:: hydrate()
@@ -97,9 +133,11 @@ Module Contents
       Hook that gets called when the component's data is hydrated.
 
 
+
    .. py:method:: complete()
 
       Hook that gets called after all component methods are executed.
+
 
 
    .. py:method:: rendered(html)
@@ -107,9 +145,11 @@ Module Contents
       Hook that gets called after the component has been rendered.
 
 
+
    .. py:method:: parent_rendered(html)
 
       Hook that gets called after the component's parent has been rendered.
+
 
 
    .. py:method:: updating(name, value)
@@ -117,9 +157,11 @@ Module Contents
       Hook that gets called when a component's data is about to get updated.
 
 
+
    .. py:method:: updated(name, value)
 
       Hook that gets called when a component's data is updated.
+
 
 
    .. py:method:: resolved(name, value)
@@ -127,14 +169,29 @@ Module Contents
       Hook that gets called when a component's data is resolved.
 
 
+
    .. py:method:: calling(name, args)
 
       Hook that gets called when a component's method is about to get called.
 
 
+
    .. py:method:: called(name, args)
 
       Hook that gets called when a component's method is called.
+
+
+
+   .. py:method:: pre_parse()
+
+      Hook that gets called before the data is parsed and applied to the component.
+
+
+
+   .. py:method:: post_parse()
+
+      Hook that gets called after the data is parsed and applied to the component.
+
 
 
    .. py:method:: render(*, init_js=False, extra_context=None, request=None) -> str
@@ -149,14 +206,17 @@ Module Contents
                             to be set explicitly.
 
 
+
    .. py:method:: dispatch(request, *args, **kwargs)
 
       Called by the `as_view` class method when utilizing a component directly as a view.
 
 
+
    .. py:method:: get_frontend_context_variables() -> str
 
       Get publicly available properties and output them in a string-encoded JSON object.
+
 
 
    .. py:method:: get_context_data(**kwargs)
@@ -165,18 +225,21 @@ Module Contents
       properties and methods.
 
 
-   .. py:method:: is_valid(model_names: Optional[List] = None) -> bool
+
+   .. py:method:: is_valid(model_names: list | None = None) -> bool
 
 
-   .. py:method:: validate(model_names: Optional[List] = None) -> Dict
+   .. py:method:: validate(model_names: list | None = None) -> dict
 
       Validates the data using the `form_class` set on the component.
 
       :param model_names: Only include validation errors for specified fields. If none, validate everything.
 
 
-   .. py:method:: create(*, component_id: str, component_name: str, component_key: str = '', parent: Optional[UnicornView] = None, request: Optional[django.http.HttpRequest] = None, use_cache=True, component_args: Optional[List] = None, kwargs: Optional[Dict[str, Any]] = None) -> UnicornView
+
+   .. py:method:: create(*, component_id: str, component_name: str, component_key: str = '', parent: Optional[Component] = None, request: django.http.HttpRequest | None = None, use_cache=True, component_args: list | None = None, kwargs: dict[str, Any] | None = None) -> Component
       :staticmethod:
+
 
       Find and instantiate a component class based on `component_name`.
 
@@ -193,10 +256,14 @@ Module Contents
                 Raises `ComponentModuleLoadError` or `ComponentClassLoadError` if the component could not be loaded.
 
 
+
    .. py:method:: as_view(**initkwargs)
       :classmethod:
+
 
       Main entry point for a request-response process.
 
 
+
+.. py:data:: UnicornView
 

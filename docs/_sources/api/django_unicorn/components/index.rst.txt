@@ -1,29 +1,19 @@
-:py:mod:`django_unicorn.components`
-===================================
+django_unicorn.components
+=========================
 
 .. py:module:: django_unicorn.components
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   fields/index.rst
-   mixins/index.rst
-   unicorn_template_response/index.rst
-   unicorn_view/index.rst
-   updaters/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
+   /api/django_unicorn/components/fields/index
+   /api/django_unicorn/components/mixins/index
+   /api/django_unicorn/components/unicorn_template_response/index
+   /api/django_unicorn/components/unicorn_view/index
+   /api/django_unicorn/components/updaters/index
 
 

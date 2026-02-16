@@ -1,7 +1,11 @@
-:py:mod:`django_unicorn.settings`
-=================================
+django_unicorn.settings
+=======================
 
 .. py:module:: django_unicorn.settings
+
+
+
+
 
 
 Module Contents
@@ -10,36 +14,28 @@ Module Contents
 .. py:data:: SETTINGS_KEY
    :value: 'UNICORN'
 
-   
 
 .. py:data:: LEGACY_SETTINGS_KEY
+   :value: 'DJANGO_UNICORN'
 
-   
 
 .. py:data:: DEFAULT_MORPHER_NAME
    :value: 'morphdom'
 
-   
 
 .. py:data:: MORPHER_NAMES
    :value: ('morphdom', 'alpine')
 
-   
 
 .. py:function:: get_settings()
 
-
 .. py:function:: get_setting(key, default=None)
-
 
 .. py:function:: get_serial_settings()
 
-
 .. py:function:: get_cache_alias()
 
-
 .. py:function:: get_morpher_settings()
-
 
 .. py:function:: get_script_location()
 
@@ -57,5 +53,4 @@ Module Contents
 
 
 .. py:function:: get_minify_html_enabled()
-
 

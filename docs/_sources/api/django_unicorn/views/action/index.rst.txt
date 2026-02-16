@@ -1,0 +1,77 @@
+django_unicorn.views.action
+===========================
+
+.. py:module:: django_unicorn.views.action
+
+
+
+
+Module Contents
+---------------
+
+.. py:class:: Action(data: dict[str, Any])
+
+   Base class for all actions.
+
+
+   .. py:attribute:: action_type
+
+
+   .. py:attribute:: payload
+
+
+   .. py:attribute:: partials
+
+
+.. py:class:: SyncInput(data: dict[str, Any])
+
+   Bases: :py:obj:`Action`
+
+
+   Base class for all actions.
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: value
+
+
+.. py:class:: CallMethod(data: dict[str, Any])
+
+   Bases: :py:obj:`Action`
+
+
+   Base class for all actions.
+
+
+   .. py:attribute:: kwargs
+
+
+.. py:class:: Reset(data: dict[str, Any])
+
+   Bases: :py:obj:`Action`
+
+
+   Base class for all actions.
+
+
+.. py:class:: Refresh(data: dict[str, Any])
+
+   Bases: :py:obj:`Action`
+
+
+   Base class for all actions.
+
+
+.. py:class:: Toggle(data: dict[str, Any])
+
+   Bases: :py:obj:`Action`
+
+
+   Base class for all actions.
+
+
+   .. py:attribute:: kwargs
+
+

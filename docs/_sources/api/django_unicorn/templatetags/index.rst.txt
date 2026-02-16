@@ -1,15 +1,15 @@
-:py:mod:`django_unicorn.templatetags`
-=====================================
+django_unicorn.templatetags
+===========================
 
 .. py:module:: django_unicorn.templatetags
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   unicorn/index.rst
+   /api/django_unicorn/templatetags/unicorn/index
 
 

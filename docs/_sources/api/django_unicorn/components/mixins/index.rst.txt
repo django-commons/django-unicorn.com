@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.components.mixins`
-==========================================
+django_unicorn.components.mixins
+================================
 
 .. py:module:: django_unicorn.components.mixins
+
+
 
 
 Module Contents
@@ -9,11 +11,10 @@ Module Contents
 
 .. py:class:: ModelValueMixin
 
-
    Adds a `value` method to a model similar to `QuerySet.values(*fields)` which serializes
    a model into a dictionary with the fields as specified in the `fields` argument.
 
-   .. py:method:: value(*fields)
 
+   .. py:method:: value(*fields)
 
 

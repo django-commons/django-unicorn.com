@@ -1,38 +1,33 @@
 <!doctype html>
-<html class="no-js" lang="en">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Views" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.django-unicorn.com/views/" />
 <meta property="og:site_name" content="Unicorn" />
 <meta property="og:description" content="Views contain a class that inherits from UnicornView for the component’s Python code. To follow typical naming conventions, the view will convert the component’s name to be more Pythonic. For examp..." />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://www.django-unicorn.com/None" />
-<meta property="og:image:alt" content="Views contain a class that inherits from UnicornView for the component’s Python code. To follow typical naming conventions, the view will convert the compone..." />
 <meta name="description" content="Views contain a class that inherits from UnicornView for the component’s Python code. To follow typical naming conventions, the view will convert the component’s name to be more Pythonic. For examp..." />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="next" title="Templates" href="../templates/" /><link rel="prev" title="Components" href="../components/" />
+<link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Templates" href="../templates/"><link rel="prev" title="Components" href="../components/">
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>Views - Unicorn</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/unicorn.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/unicorn.css?v=e99f9edd" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
@@ -83,7 +78,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -98,34 +93,73 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 <div class="announcement">
   <aside class="announcement-content">
@@ -189,8 +223,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -198,16 +231,15 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -215,7 +247,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../">
-  
   
   
 </a><form class="sidebar-search-container" method="get" action="../search/" role="search">
@@ -275,41 +306,45 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/django_unicorn/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/components/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/fields/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.fields</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/mixins/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.mixins</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/unicorn_template_response/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_template_response</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/unicorn_view/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_view</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/updaters/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.updaters</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/django_unicorn/">django_unicorn</a><input aria-label="Toggle navigation of django_unicorn" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/cacher/">django_unicorn.cacher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/call_method_parser/">django_unicorn.call_method_parser</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/components/">django_unicorn.components</a><input aria-label="Toggle navigation of django_unicorn.components" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/fields/">django_unicorn.components.fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/mixins/">django_unicorn.components.mixins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/unicorn_template_response/">django_unicorn.components.unicorn_template_response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/unicorn_view/">django_unicorn.components.unicorn_view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/components/updaters/">django_unicorn.components.updaters</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/templatetags/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.templatetags</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/templatetags/unicorn/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.templatetags.unicorn</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/db/">django_unicorn.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/decorators/">django_unicorn.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/errors/">django_unicorn.errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/serializer/">django_unicorn.serializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/settings/">django_unicorn.settings</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/templatetags/">django_unicorn.templatetags</a><input aria-label="Toggle navigation of django_unicorn.templatetags" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/templatetags/unicorn/">django_unicorn.templatetags.unicorn</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/views/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/call_method/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.call_method</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/sync_input/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.sync_input</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/typer/">django_unicorn.typer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/typing/">django_unicorn.typing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/urls/">django_unicorn.urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/utils/">django_unicorn.utils</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api/django_unicorn/views/">django_unicorn.views</a><input aria-label="Toggle navigation of django_unicorn.views" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/action/">django_unicorn.views.action</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/">django_unicorn.views.action_parsers</a><input aria-label="Toggle navigation of django_unicorn.views.action_parsers" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/call_method/">django_unicorn.views.action_parsers.call_method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/sync_input/">django_unicorn.views.action_parsers.sync_input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/django_unicorn/views/action_parsers/utils/">django_unicorn.views.action_parsers.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/objects/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.objects</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.utils</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/message/">django_unicorn.views.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/objects/">django_unicorn.views.objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/request/">django_unicorn.views.request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/response/">django_unicorn.views.response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/django_unicorn/views/utils/">django_unicorn.views.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/cacher/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.cacher</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/call_method_parser/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.call_method_parser</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/db/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.db</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/decorators/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.decorators</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/errors/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.errors</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/serializer/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.serializer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/settings/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.settings</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/typer/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.typer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/typing/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.typing</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/urls/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.urls</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/django_unicorn/utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.utils</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -331,38 +366,42 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/views.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="views">
-<h1>Views<a class="headerlink" href="#views" title="Permalink to this heading">#</a></h1>
+<h1>Views<a class="headerlink" href="#views" title="Link to this heading">¶</a></h1>
 <p>Views contain a class that inherits from <code class="docutils literal notranslate"><span class="pre">UnicornView</span></code> for the component’s Python code.</p>
 <p>To follow typical naming conventions, the view will convert the component’s name to be more Pythonic. For example, if the component name is <code class="docutils literal notranslate"><span class="pre">hello-world</span></code>, the template file name will also be <code class="docutils literal notranslate"><span class="pre">hello-world.html</span></code>. However, the view file name will be <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> and it will contain one class named <code class="docutils literal notranslate"><span class="pre">HelloWorldView</span></code>.</p>
 <p>This allows <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> to connect the template and view using convention instead of configuration. Using the <code class="docutils literal notranslate"><span class="pre">startunicorn</span></code> management command is the easiest way to make sure that components are created correctly.</p>
 <section id="example-view">
-<h2>Example view<a class="headerlink" href="#example-view" title="Permalink to this heading">#</a></h2>
+<h2>Example view<a class="headerlink" href="#example-view" title="Link to this heading">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </section>
 <section id="class-variables">
-<h2>Class variables<a class="headerlink" href="#class-variables" title="Permalink to this heading">#</a></h2>
+<h2>Class variables<a class="headerlink" href="#class-variables" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> will serialize/deserialize view class variables to JSON as needed for interactive parts of the component.</p>
 <p>Automatically handled field types:</p>
 <ul class="simple">
@@ -379,48 +418,48 @@
 <li><p><a class="reference internal" href="#custom-class"><span class="std std-ref">Custom classes</span></a></p></li>
 </ul>
 <section id="a-word-of-caution-about-mutable-class-variables">
-<h3>A word of caution about mutable class variables<a class="headerlink" href="#a-word-of-caution-about-mutable-class-variables" title="Permalink to this heading">#</a></h3>
+<h3>A word of caution about mutable class variables<a class="headerlink" href="#a-word-of-caution-about-mutable-class-variables" title="Link to this heading">¶</a></h3>
 <p>Be careful when using a default mutable class variables, namely <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>, and objects. As mentioned in <a class="reference external" href="https://docs.python.org/3.8/tutorial/classes.html#tut-object">A Word About Names and Objects</a> defining a mutable default for a class variable can have subtle and unexpected consequences – it <em>will</em> cause component instances to share state which is usually not the intention.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sentence.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
 <span class="c1"># This will cause unexpected consequences</span>
-<span class="k">class</span> <span class="nc">SentenceView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SentenceView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># all SentenceView instances will share a reference to one list in memory</span>
     <span class="n">word_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># all SentenceView instances will share a reference to one dictionary in memory</span>
 
-    <span class="k">def</span> <span class="nf">add_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
 </div>
 <p>The correct way to initialize a mutable object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sentence.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">SentenceView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SentenceView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># not setting a default value is valid</span>
     <span class="n">word_counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># using None for the default is valid</span>
 
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># initialize a new list every time a SentenceView is initialized and mounted</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">word_counts</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># initialize a new dictionary every time a SentenceView is initialized and mounted</span>
 
-    <span class="k">def</span> <span class="nf">add_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_word</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="o">...</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionaries</span></code>, and objects all run into this problem, so be sure to initialize mutable objects in the component’s <code class="docutils literal notranslate"><span class="pre">mount</span></code> function.</p>
 </section>
 <section id="class-variable-type-hints">
-<h3>Class variable type hints<a class="headerlink" href="#class-variable-type-hints" title="Permalink to this heading">#</a></h3>
+<h3>Class variable type hints<a class="headerlink" href="#class-variable-type-hints" title="Link to this heading">¶</a></h3>
 <p>Type hints on fields help <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> ensure that the field will always have the appropriate type.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># rating.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">RatingView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RatingView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">rating</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">calculate_percentage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_percentage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rating</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">)</span>
 </pre></div>
@@ -428,21 +467,21 @@
 <p>Without the <code class="docutils literal notranslate"><span class="pre">float</span></code> type hint on <code class="docutils literal notranslate"><span class="pre">rating</span></code>, Python will complain that <code class="docutils literal notranslate"><span class="pre">rating</span></code> is a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
 </section>
 <section id="custom-class">
-<h3>Custom class<a class="headerlink" href="#custom-class" title="Permalink to this heading">#</a></h3>
+<h3>Custom class<a class="headerlink" href="#custom-class" title="Link to this heading">¶</a></h3>
 <p>Custom classes need to define how they are serialized. If you have access to the object to serialize, you can define a <code class="docutils literal notranslate"><span class="pre">to_json</span></code> method on the object to return a dictionary that can be used to serialize. Inheriting from <code class="docutils literal notranslate"><span class="pre">unicorn.components.UnicornField</span></code> is a quick way to serialize a custom class, but it uses <code class="docutils literal notranslate"><span class="pre">self.__dict__</span></code> under the hood, so it is not doing anything particularly smart.</p>
 <p>Another option is to set the <code class="docutils literal notranslate"><span class="pre">form_class</span></code> on the component and utilize <a class="reference internal" href="../validation/"><span class="std std-doc">Django’s built-in forms and widgets</span></a> to handle how the class should be deserialized.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span><span class="p">,</span> <span class="n">UnicornField</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span><span class="p">,</span> <span class="n">UnicornField</span>
 
-<span class="k">class</span> <span class="nc">Author</span><span class="p">(</span><span class="n">UnicornField</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Author</span><span class="p">(</span><span class="n">UnicornField</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Neil Gaiman&#39;</span>
 
     <span class="c1"># Not needed because inherited from `UnicornField`</span>
     <span class="c1"># def to_json(self):</span>
     <span class="c1">#    return {&#39;name&#39;: self.name}</span>
 
-    <span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
         <span class="n">author</span> <span class="o">=</span> <span class="n">Author</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -459,25 +498,25 @@
 </section>
 </section>
 <section id="class-properties">
-<h2>Class properties<a class="headerlink" href="#class-properties" title="Permalink to this heading">#</a></h2>
+<h2>Class properties<a class="headerlink" href="#class-properties" title="Link to this heading">¶</a></h2>
 <section id="template-name">
-<h3>template_name<a class="headerlink" href="#template-name" title="Permalink to this heading">#</a></h3>
+<h3>template_name<a class="headerlink" href="#template-name" title="Link to this heading">¶</a></h3>
 <p>By default, the component name is used to determine what template should be used. For example, <code class="docutils literal notranslate"><span class="pre">hello_world.HelloWorldView</span></code> would by default use <code class="docutils literal notranslate"><span class="pre">unicorn/hello-world.html</span></code>. However, you can specify a particular template by setting <code class="docutils literal notranslate"><span class="pre">template_name</span></code> in the component.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;unicorn/hello-world.html&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="template-html">
-<h3>template_html<a class="headerlink" href="#template-html" title="Permalink to this heading">#</a></h3>
+<h3>template_html<a class="headerlink" href="#template-html" title="Link to this heading">¶</a></h3>
 <p>Template HTML can be defined inline on the component instead of using an external HTML file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">template_html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;div&gt;</span>
 <span class="s2">    &lt;div&gt;</span>
 <span class="s2">        Count: {{ count }}</span>
@@ -494,64 +533,64 @@
 </section>
 </section>
 <section id="instance-properties">
-<h2>Instance properties<a class="headerlink" href="#instance-properties" title="Permalink to this heading">#</a></h2>
+<h2>Instance properties<a class="headerlink" href="#instance-properties" title="Link to this heading">¶</a></h2>
 <section id="component-args">
-<h3>component_args<a class="headerlink" href="#component-args" title="Permalink to this heading">#</a></h3>
+<h3>component_args<a class="headerlink" href="#component-args" title="Link to this heading">¶</a></h3>
 <p>The arguments passed into the component.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- index.html --&gt;</span>
 {% unicorn &#39;hello-arg&#39; &#39;World&#39; %}
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_arg.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloArgView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloArgView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="component-kwargs">
-<h3>component_kwargs<a class="headerlink" href="#component-kwargs" title="Permalink to this heading">#</a></h3>
+<h3>component_kwargs<a class="headerlink" href="#component-kwargs" title="Link to this heading">¶</a></h3>
 <p>The keyword arguments passed into the component.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- index.html --&gt;</span>
 {% unicorn &#39;hello-kwarg&#39; hello=&#39;World&#39; %}
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_kwarg.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloKwargView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloKwargView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_kwargs</span><span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="request">
-<h3>request<a class="headerlink" href="#request" title="Permalink to this heading">#</a></h3>
+<h3>request<a class="headerlink" href="#request" title="Link to this heading">¶</a></h3>
 <p>The current <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initial request that rendered the component&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AJAX request that re-renders the component&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="force-render">
-<h3>force_render<a class="headerlink" href="#force-render" title="Permalink to this heading">#</a></h3>
+<h3>force_render<a class="headerlink" href="#force-render" title="Link to this heading">¶</a></h3>
 <p>Forces the component to render. This is not normally needed for the current component, but is sometimes needed when a child component needs a parent to re-render.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">FilterView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FilterView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">updated_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">updated_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">load_table</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">query</span><span class="p">:</span>
@@ -564,13 +603,13 @@
 </section>
 </section>
 <section id="custom-methods">
-<h2>Custom methods<a class="headerlink" href="#custom-methods" title="Permalink to this heading">#</a></h2>
+<h2>Custom methods<a class="headerlink" href="#custom-methods" title="Link to this heading">¶</a></h2>
 <p>Defined component instance methods with no arguments (other than <code class="docutils literal notranslate"><span class="pre">self</span></code>) are available in the Django template context and can be called like a property.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># states.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">StateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">all_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">StateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Alabama&quot;</span><span class="p">,</span> <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span> <span class="s2">&quot;Arizona&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -589,102 +628,102 @@
 <p class="admonition-title">Tip</p>
 <p>If the method is intensive and will be called multiple times, it can be cached with Django’s <a href="https://docs.djangoproject.com/en/stable/ref/utils/#django.utils.functional.cached_property"><code class="docutils literal notranslate"><span class="pre">cached_property</span></code></a> to prevent duplicate API requests or database queries. The method will only be executed once per component rendering.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># states.py</span>
-<span class="kn">from</span> <span class="nn">django.utils.functional</span> <span class="kn">import</span> <span class="n">cached_property</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.utils.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">StateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">StateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="nd">@cached_property</span>
-    <span class="k">def</span> <span class="nf">all_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Alabama&quot;</span><span class="p">,</span> <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span> <span class="s2">&quot;Arizona&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </section>
 <section id="instance-methods">
-<h2>Instance methods<a class="headerlink" href="#instance-methods" title="Permalink to this heading">#</a></h2>
+<h2>Instance methods<a class="headerlink" href="#instance-methods" title="Link to this heading">¶</a></h2>
 <section id="mount">
-<h3>mount()<a class="headerlink" href="#mount" title="Permalink to this heading">#</a></h3>
+<h3>mount()<a class="headerlink" href="#mount" title="Link to this heading">¶</a></h3>
 <p>Gets called when the component gets initialized or <a class="reference internal" href="../actions/#reset"><span class="std std-ref">reset</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;original&quot;</span>
 
-    <span class="k">def</span> <span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;mounted&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="hydrate">
-<h3>hydrate()<a class="headerlink" href="#hydrate" title="Permalink to this heading">#</a></h3>
+<h3>hydrate()<a class="headerlink" href="#hydrate" title="Link to this heading">¶</a></h3>
 <p>Gets called when the component data gets set.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_world.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;original&quot;</span>
 
-    <span class="k">def</span> <span class="nf">hydrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hydrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;hydrated&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="updating-property-name-property-value">
-<h3>updating(property_name, property_value)<a class="headerlink" href="#updating-property-name-property-value" title="Permalink to this heading">#</a></h3>
+<h3>updating(property_name, property_value)<a class="headerlink" href="#updating-property-name-property-value" title="Link to this heading">¶</a></h3>
 <p>Gets called before each property that will get set. This can be called multiple times in certain instances, e.g. during a debounce.</p>
 </section>
 <section id="updated-property-name-property-value">
-<h3>updated(property_name, property_value)<a class="headerlink" href="#updated-property-name-property-value" title="Permalink to this heading">#</a></h3>
+<h3>updated(property_name, property_value)<a class="headerlink" href="#updated-property-name-property-value" title="Link to this heading">¶</a></h3>
 <p>Gets called after each property gets set. This can be called multiple times in certain instances, e.g. during a debounce.</p>
 </section>
 <section id="resolved-property-name-property-value">
-<h3>resolved(property_name, property_value)<a class="headerlink" href="#resolved-property-name-property-value" title="Permalink to this heading">#</a></h3>
+<h3>resolved(property_name, property_value)<a class="headerlink" href="#resolved-property-name-property-value" title="Link to this heading">¶</a></h3>
 <p>Gets called after the specified property gets set. This will only get called once.</p>
 </section>
 <section id="id1">
-<h3>updating_{property_name}(property_value)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>updating_{property_name}(property_value)<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>Gets called before the specified property gets set. This can be called multiple times in certain instances, e.g. during a debounce.</p>
 </section>
 <section id="id2">
-<h3>updated_{property_name}(property_value)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>updated_{property_name}(property_value)<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>Gets called after the specified property gets set. This can be called multiple times in certain instances, e.g. during a debounce.</p>
 </section>
 <section id="id3">
-<h3>resolved_{property_name}(property_value)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>resolved_{property_name}(property_value)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p>Gets called after the specified property gets set. This will only get called once.</p>
 </section>
 <section id="calling-name-args">
-<h3>calling(name, args)<a class="headerlink" href="#calling-name-args" title="Permalink to this heading">#</a></h3>
+<h3>calling(name, args)<a class="headerlink" href="#calling-name-args" title="Link to this heading">¶</a></h3>
 <p>Gets called before each method that gets called.</p>
 </section>
 <section id="called-name-args">
-<h3>called(name, args)<a class="headerlink" href="#called-name-args" title="Permalink to this heading">#</a></h3>
+<h3>called(name, args)<a class="headerlink" href="#called-name-args" title="Link to this heading">¶</a></h3>
 <p>Gets called after each method gets called.</p>
 </section>
 <section id="complete">
-<h3>complete()<a class="headerlink" href="#complete" title="Permalink to this heading">#</a></h3>
+<h3>complete()<a class="headerlink" href="#complete" title="Link to this heading">¶</a></h3>
 <p>Gets called after all methods have been called.</p>
 </section>
 <section id="rendered-html">
-<h3>rendered(html)<a class="headerlink" href="#rendered-html" title="Permalink to this heading">#</a></h3>
+<h3>rendered(html)<a class="headerlink" href="#rendered-html" title="Link to this heading">¶</a></h3>
 <p>Gets called after the component has been rendered.</p>
 </section>
 <section id="parent-rendered-html">
-<h3>parent_rendered(html)<a class="headerlink" href="#parent-rendered-html" title="Permalink to this heading">#</a></h3>
+<h3>parent_rendered(html)<a class="headerlink" href="#parent-rendered-html" title="Link to this heading">¶</a></h3>
 <p>Gets called after the component’s parent has been rendered (if applicable).</p>
 </section>
 </section>
 <section id="meta">
-<h2>Meta<a class="headerlink" href="#meta" title="Permalink to this heading">#</a></h2>
+<h2>Meta<a class="headerlink" href="#meta" title="Link to this heading">¶</a></h2>
 <p>Classes that derive from <code class="docutils literal notranslate"><span class="pre">UnicornView</span></code> can include a <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class that provides some advanced options for the component.</p>
 <section id="exclude">
-<h3>exclude<a class="headerlink" href="#exclude" title="Permalink to this heading">#</a></h3>
+<h3>exclude<a class="headerlink" href="#exclude" title="Link to this heading">¶</a></h3>
 <p>By default, all public attributes of the component are included in the context of the Django template and available to JavaScript. One way to protect internal-only data is to prefix the attribute name with <code class="docutils literal notranslate"><span class="pre">_</span></code> to indicate it should stay private.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_state.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">_all_states</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;Alabama&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span>
@@ -696,9 +735,9 @@
 </div>
 <p>Another way to prevent that data from being available to the component template is to add it to the <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class’s <code class="docutils literal notranslate"><span class="pre">exclude</span></code> tuple.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_state.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">all_states</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;Alabama&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span>
@@ -707,13 +746,13 @@
         <span class="s2">&quot;Wyoming&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;all_states&quot;</span><span class="p">,</span> <span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="javascript-exclude">
-<h3>javascript_exclude<a class="headerlink" href="#javascript-exclude" title="Permalink to this heading">#</a></h3>
+<h3>javascript_exclude<a class="headerlink" href="#javascript-exclude" title="Link to this heading">¶</a></h3>
 <p>To allow an attribute to be included in the the context to be used by a Django template, but not exposed to JavaScript, add it to the <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class’s <code class="docutils literal notranslate"><span class="pre">javascript_exclude</span></code> tuple.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- hello-state.html --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -724,9 +763,9 @@
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello_state.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloStateView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">all_states</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;Alabama&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span>
@@ -735,13 +774,13 @@
         <span class="s2">&quot;Wyoming&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">javascript_exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;all_states&quot;</span><span class="p">,</span> <span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="safe">
-<h3>safe<a class="headerlink" href="#safe" title="Permalink to this heading">#</a></h3>
+<h3>safe<a class="headerlink" href="#safe" title="Link to this heading">¶</a></h3>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">unicorn</span></code> HTML encodes updated field values to prevent XSS attacks. You need to explicitly opt-in to allow a field to be returned without being encoded by adding it to the <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class’s <code class="docutils literal notranslate"><span class="pre">safe</span></code> tuple.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- safe-example.html --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -751,12 +790,12 @@
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># safe_example.py</span>
-<span class="kn">from</span> <span class="nn">django_unicorn.components</span> <span class="kn">import</span> <span class="n">UnicornView</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="k">class</span> <span class="nc">SafeExampleView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SafeExampleView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
     <span class="n">something_safe</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
         <span class="n">safe</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;something_safe&quot;</span><span class="p">,</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -804,7 +843,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, Adam Hill
+                Copyright &#169; 2023-2026, Adam Hill
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -884,15 +923,12 @@
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/design-tabs.js"></script>
+</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     </body>
 </html>

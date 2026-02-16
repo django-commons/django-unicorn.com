@@ -1,0 +1,31 @@
+django_unicorn.views.message
+============================
+
+.. py:module:: django_unicorn.views.message
+
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:data:: MIN_VALIDATION_ERROR_ARGS
+   :value: 2
+
+
+.. py:class:: UnicornMessageHandler(request: django.http.HttpRequest)
+
+   .. py:attribute:: request
+
+
+   .. py:method:: handle(component_request: django_unicorn.views.request.ComponentRequest) -> dict
+
+      Process a `ComponentRequest` by adding it to the cache and then either:
+          - processing all of the component requests in the cache and returning the resulting value if
+              it is the first component request for that particular component name + component id combination
+          - return a `dict` saying that the request has been queued
+
+
+

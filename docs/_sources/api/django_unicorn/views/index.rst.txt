@@ -1,57 +1,31 @@
-:py:mod:`django_unicorn.views`
-==============================
+django_unicorn.views
+====================
 
 .. py:module:: django_unicorn.views
 
 
-Subpackages
------------
-.. toctree::
-   :titlesonly:
-   :maxdepth: 3
-
-   action_parsers/index.rst
-
-
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   objects/index.rst
-   utils/index.rst
+   /api/django_unicorn/views/action/index
+   /api/django_unicorn/views/action_parsers/index
+   /api/django_unicorn/views/message/index
+   /api/django_unicorn/views/objects/index
+   /api/django_unicorn/views/request/index
+   /api/django_unicorn/views/response/index
+   /api/django_unicorn/views/utils/index
+
+
 
 
 Package Contents
 ----------------
 
-.. py:data:: MIN_VALIDATION_ERROR_ARGS
-   :value: 2
-
-   
-
 .. py:function:: handle_error(view_func)
 
    Returns a JSON response with an error if necessary.
-
-
-.. py:function:: message(request: django.http.HttpRequest, component_name: Optional[str] = None) -> django.http.JsonResponse
-
-   Endpoint that instantiates the component and does the correct action
-   (set an attribute or call a method) depending on the JSON payload in the body.
-
-   :param param request: HttpRequest for the function-based view.
-   :param param: component_name: Name of the component, e.g. "hello-world".
-
-   :returns: {
-             "id": component_id,
-             "dom": html,  # re-rendered version of the component after actions in the payload are completed
-             "data": {},  # updated data after actions in the payload are completed
-             "errors": {},  # form validation errors
-             "return": {}, # optional return value from an executed action
-             "parent": {}  # optional representation of the parent component
-             }
-   :rtype: `JsonRequest` with the following structure in the body
 
 

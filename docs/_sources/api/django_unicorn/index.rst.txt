@@ -1,36 +1,28 @@
-:py:mod:`django_unicorn`
-========================
+django_unicorn
+==============
 
 .. py:module:: django_unicorn
 
 
-Subpackages
------------
-.. toctree::
-   :titlesonly:
-   :maxdepth: 3
-
-   components/index.rst
-   templatetags/index.rst
-   views/index.rst
-
-
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   cacher/index.rst
-   call_method_parser/index.rst
-   db/index.rst
-   decorators/index.rst
-   errors/index.rst
-   serializer/index.rst
-   settings/index.rst
-   typer/index.rst
-   typing/index.rst
-   urls/index.rst
-   utils/index.rst
+   /api/django_unicorn/cacher/index
+   /api/django_unicorn/call_method_parser/index
+   /api/django_unicorn/components/index
+   /api/django_unicorn/db/index
+   /api/django_unicorn/decorators/index
+   /api/django_unicorn/errors/index
+   /api/django_unicorn/serializer/index
+   /api/django_unicorn/settings/index
+   /api/django_unicorn/templatetags/index
+   /api/django_unicorn/typer/index
+   /api/django_unicorn/typing/index
+   /api/django_unicorn/urls/index
+   /api/django_unicorn/utils/index
+   /api/django_unicorn/views/index
 
 

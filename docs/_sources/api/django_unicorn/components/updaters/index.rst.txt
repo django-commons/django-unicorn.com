@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.components.updaters`
-============================================
+django_unicorn.components.updaters
+==================================
 
 .. py:module:: django_unicorn.components.updaters
+
+
 
 
 Module Contents
@@ -9,34 +11,59 @@ Module Contents
 
 .. py:class:: Update
 
-
    Base class for updaters.
+
 
    .. py:method:: to_json()
 
 
-
 .. py:class:: HashUpdate(url_hash: str)
 
-
    Bases: :py:obj:`Update`
+
 
    Updates the current URL hash from an action method.
 
 
-.. py:class:: LocationUpdate(redirect: django.http.response.HttpResponseRedirect, title: Optional[str] = None)
+   .. py:attribute:: hash
 
+
+.. py:class:: LocationUpdate(redirect: django.http.response.HttpResponseRedirect, title: str | None = None)
 
    Bases: :py:obj:`Update`
+
 
    Updates the current URL from an action method.
 
 
-.. py:class:: PollUpdate(*, timing: Optional[int] = None, method: Optional[str] = None, disable: bool = False)
+   .. py:attribute:: redirect
 
+
+   .. py:attribute:: title
+      :value: None
+
+
+
+.. py:class:: PollUpdate(*, timing: int | None = None, method: str | None = None, disable: bool = False)
 
    Bases: :py:obj:`Update`
 
+
    Updates the current poll from an action method.
+
+
+   .. py:attribute:: timing
+      :value: None
+
+
+
+   .. py:attribute:: method
+      :value: None
+
+
+
+   .. py:attribute:: disable
+      :value: False
+
 
 

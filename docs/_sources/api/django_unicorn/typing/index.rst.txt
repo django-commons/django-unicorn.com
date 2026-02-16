@@ -1,7 +1,9 @@
-:py:mod:`django_unicorn.typing`
-===============================
+django_unicorn.typing
+=====================
 
 .. py:module:: django_unicorn.typing
+
+
 
 
 Module Contents
@@ -9,13 +11,5 @@ Module Contents
 
 .. py:data:: M_co
 
-   
-
-.. py:class:: QuerySetType(model=None, query=None, using=None, hints=None)
-
-
-   Bases: :py:obj:`Generic`\ [\ :py:obj:`M_co`\ ], :py:obj:`django.db.models.QuerySet`
-
-   Type for QuerySet that can be used for a typehint in components.
-
+.. py:data:: QuerySetType
 

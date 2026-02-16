@@ -1,38 +1,33 @@
 <!doctype html>
-<html class="no-js" lang="en">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<html class="no-js" lang="en" data-content_root="../../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="django_unicorn.components.unicorn_view" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.django-unicorn.com/api/django_unicorn/components/unicorn_view/" />
 <meta property="og:site_name" content="Unicorn" />
 <meta property="og:description" content="Module Contents:" />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://www.django-unicorn.com/None" />
-<meta property="og:image:alt" content="Module Contents:" />
 <meta name="description" content="Module Contents:" />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="index" title="Index" href="../../../../genindex/" /><link rel="search" title="Search" href="../../../../search/" /><link rel="next" title="django_unicorn.components.updaters" href="../updaters/" /><link rel="prev" title="django_unicorn.components.unicorn_template_response" href="../unicorn_template_response/" />
+<link rel="index" title="Index" href="../../../../genindex/"><link rel="search" title="Search" href="../../../../search/"><link rel="next" title="django_unicorn.components.updaters" href="../updaters/"><link rel="prev" title="django_unicorn.components.unicorn_template_response" href="../unicorn_template_response/">
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>django_unicorn.components.unicorn_view - Unicorn</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/unicorn.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/unicorn.css?v=e99f9edd" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
@@ -83,7 +78,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -98,34 +93,73 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 <div class="announcement">
   <aside class="announcement-content">
@@ -189,8 +223,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -198,16 +231,15 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -215,7 +247,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../">
-  
   
   
 </a><form class="sidebar-search-container" method="get" action="../../../../search/" role="search">
@@ -275,41 +306,45 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../../"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current has-children"><a class="reference internal" href="../"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../fields/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.fields</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mixins/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.mixins</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../unicorn_template_response/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_template_response</span></code></a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_view</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../updaters/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.updaters</span></code></a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../">django_unicorn</a><input aria-label="Toggle navigation of django_unicorn" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../cacher/">django_unicorn.cacher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../call_method_parser/">django_unicorn.call_method_parser</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../">django_unicorn.components</a><input aria-label="Toggle navigation of django_unicorn.components" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../fields/">django_unicorn.components.fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mixins/">django_unicorn.components.mixins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unicorn_template_response/">django_unicorn.components.unicorn_template_response</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">django_unicorn.components.unicorn_view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../updaters/">django_unicorn.components.updaters</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../templatetags/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.templatetags</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../templatetags/unicorn/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.templatetags.unicorn</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../db/">django_unicorn.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decorators/">django_unicorn.decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../errors/">django_unicorn.errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../serializer/">django_unicorn.serializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../settings/">django_unicorn.settings</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../templatetags/">django_unicorn.templatetags</a><input aria-label="Toggle navigation of django_unicorn.templatetags" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../templatetags/unicorn/">django_unicorn.templatetags.unicorn</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../views/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../views/action_parsers/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/call_method/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.call_method</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/sync_input/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.sync_input</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.action_parsers.utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../typer/">django_unicorn.typer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../typing/">django_unicorn.typing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../urls/">django_unicorn.urls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils/">django_unicorn.utils</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../views/">django_unicorn.views</a><input aria-label="Toggle navigation of django_unicorn.views" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../views/action/">django_unicorn.views.action</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../views/action_parsers/">django_unicorn.views.action_parsers</a><input aria-label="Toggle navigation of django_unicorn.views.action_parsers" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/call_method/">django_unicorn.views.action_parsers.call_method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/sync_input/">django_unicorn.views.action_parsers.sync_input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../views/action_parsers/utils/">django_unicorn.views.action_parsers.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../views/objects/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.objects</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../views/utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.views.utils</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../views/message/">django_unicorn.views.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../views/objects/">django_unicorn.views.objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../views/request/">django_unicorn.views.request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../views/response/">django_unicorn.views.response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../views/utils/">django_unicorn.views.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../cacher/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.cacher</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../call_method_parser/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.call_method_parser</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../db/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.db</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../decorators/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.decorators</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../errors/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.errors</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../serializer/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.serializer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../settings/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.settings</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../typer/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.typer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../typing/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.typing</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../urls/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.urls</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils/"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.utils</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -331,187 +366,243 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../../_sources/api/django_unicorn/components/unicorn_view/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="module-django_unicorn.components.unicorn_view">
-<span id="django-unicorn-components-unicorn-view"></span><h1><a class="reference internal" href="#module-django_unicorn.components.unicorn_view" title="django_unicorn.components.unicorn_view"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_view</span></code></a><a class="headerlink" href="#module-django_unicorn.components.unicorn_view" title="Permalink to this heading">#</a></h1>
+<span id="django-unicorn-components-unicorn-view"></span><h1>django_unicorn.components.unicorn_view<a class="headerlink" href="#module-django_unicorn.components.unicorn_view" title="Link to this heading">¶</a></h1>
 <section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.location_cache">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">location_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.location_cache" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">location_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.location_cache" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.views_cache">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">views_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.views_cache" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">views_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.views_cache" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.constructed_views_cache">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">constructed_views_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.constructed_views_cache" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">constructed_views_cache</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.constructed_views_cache" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.COMPONENTS_MODULE_CACHE_ENABLED">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">COMPONENTS_MODULE_CACHE_ENABLED</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.COMPONENTS_MODULE_CACHE_ENABLED" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">COMPONENTS_MODULE_CACHE_ENABLED</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.COMPONENTS_MODULE_CACHE_ENABLED" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.STANDARD_COMPONENT_KWARG_KEYS">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">STANDARD_COMPONENT_KWARG_KEYS</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.STANDARD_COMPONENT_KWARG_KEYS" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">STANDARD_COMPONENT_KWARG_KEYS</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.STANDARD_COMPONENT_KWARG_KEYS" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.convert_to_snake_case">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_snake_case" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_snake_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_snake_case" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.convert_to_dash_case">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_dash_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_dash_case" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_dash_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_dash_case" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.convert_to_pascal_case">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_pascal_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_pascal_case" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">convert_to_pascal_case</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.convert_to_pascal_case" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.get_locations">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">get_locations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.get_locations" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">get_locations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.get_locations" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.construct_component">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">construct_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.construct_component" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">construct_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.construct_component" title="Link to this definition">¶</a></dt>
 <dd><p>Constructs a class instance.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">UnicornView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">django.views.generic.base.TemplateView</span></code></p>
 <p>Render a template. Pass keyword arguments from the URLconf to the context.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.component_name">
-<span class="sig-name descname"><span class="pre">component_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.component_name" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_name">
+<span class="sig-name descname"><span class="pre">component_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.component_key">
-<span class="sig-name descname"><span class="pre">component_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.component_key" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_key">
+<span class="sig-name descname"><span class="pre">component_key</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_key" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.component_id">
-<span class="sig-name descname"><span class="pre">component_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.component_id" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_id">
+<span class="sig-name descname"><span class="pre">component_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_id" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.component_args">
-<span class="sig-name descname"><span class="pre">component_args</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.component_args" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_args">
+<span class="sig-name descname"><span class="pre">component_args</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_args" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.component_kwargs">
-<span class="sig-name descname"><span class="pre">component_kwargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.component_kwargs" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_kwargs">
+<span class="sig-name descname"><span class="pre">component_kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_kwargs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.response_class">
+<span class="sig-name descname"><span class="pre">response_class</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.response_class" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.request">
+<span class="sig-name descname"><span class="pre">request</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">django.http.HttpRequest</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.request" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component" title="django_unicorn.components.unicorn_view.Component"><span class="pre">Component</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.parent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.children">
+<span class="sig-name descname"><span class="pre">children</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component" title="django_unicorn.components.unicorn_view.Component"><span class="pre">Component</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.children" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.calls">
+<span class="sig-name descname"><span class="pre">calls</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.calls" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.force_render">
+<span class="sig-name descname"><span class="pre">force_render</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.force_render" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.component_cache_key">
+<span class="sig-name descname"><span class="pre">component_cache_key</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unicorn:component:'</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.component_cache_key" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.errors">
+<span class="sig-name descname"><span class="pre">errors</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.errors" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.reset" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.reset" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.call">
-<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.call" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.call" title="Link to this definition">¶</a></dt>
 <dd><p>Add a JavaScript method name and arguments to be called after the component is rendered.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.mount">
-<span class="sig-name descname"><span class="pre">mount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.mount" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.mount">
+<span class="sig-name descname"><span class="pre">mount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.mount" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when the component is first created.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.hydrate">
-<span class="sig-name descname"><span class="pre">hydrate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.hydrate" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.hydrate">
+<span class="sig-name descname"><span class="pre">hydrate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.hydrate" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when the component’s data is hydrated.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.complete">
-<span class="sig-name descname"><span class="pre">complete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.complete" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.complete">
+<span class="sig-name descname"><span class="pre">complete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.complete" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called after all component methods are executed.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.rendered">
-<span class="sig-name descname"><span class="pre">rendered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.rendered" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.rendered">
+<span class="sig-name descname"><span class="pre">rendered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.rendered" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called after the component has been rendered.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.parent_rendered">
-<span class="sig-name descname"><span class="pre">parent_rendered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.parent_rendered" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.parent_rendered">
+<span class="sig-name descname"><span class="pre">parent_rendered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.parent_rendered" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called after the component’s parent has been rendered.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.updating">
-<span class="sig-name descname"><span class="pre">updating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.updating" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.updating">
+<span class="sig-name descname"><span class="pre">updating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.updating" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when a component’s data is about to get updated.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.updated">
-<span class="sig-name descname"><span class="pre">updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.updated" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.updated">
+<span class="sig-name descname"><span class="pre">updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.updated" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when a component’s data is updated.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.resolved">
-<span class="sig-name descname"><span class="pre">resolved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.resolved" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.resolved">
+<span class="sig-name descname"><span class="pre">resolved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.resolved" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when a component’s data is resolved.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.calling">
-<span class="sig-name descname"><span class="pre">calling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.calling" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.calling">
+<span class="sig-name descname"><span class="pre">calling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.calling" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when a component’s method is about to get called.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.called">
-<span class="sig-name descname"><span class="pre">called</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.called" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.called">
+<span class="sig-name descname"><span class="pre">called</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.called" title="Link to this definition">¶</a></dt>
 <dd><p>Hook that gets called when a component’s method is called.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.render">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.render" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.pre_parse">
+<span class="sig-name descname"><span class="pre">pre_parse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.pre_parse" title="Link to this definition">¶</a></dt>
+<dd><p>Hook that gets called before the data is parsed and applied to the component.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.post_parse">
+<span class="sig-name descname"><span class="pre">post_parse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.post_parse" title="Link to this definition">¶</a></dt>
+<dd><p>Hook that gets called after the data is parsed and applied to the component.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_js</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.render" title="Link to this definition">¶</a></dt>
 <dd><p>Renders a UnicornView component with the public properties available. Delegates to a
 UnicornTemplateResponse to actually render a response.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>init_js</strong> (<em>param</em>) – Whether or not to include the Javascript required to initialize the component.</p></li>
-<li><p><strong>extra_context</strong> (<em>param</em>) – </p></li>
+<li><p><strong>extra_context</strong> (<em>param</em>)</p></li>
 <li><p><strong>request</strong> (<em>param</em>) – Set the <cite>request</cite> for rendering. Usually it will be in the context,
 but it is missing when the component is re-rendered as a direct view, so it needs
 to be set explicitly.</p></li>
@@ -521,32 +612,32 @@ to be set explicitly.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.dispatch">
-<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.dispatch" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.dispatch" title="Link to this definition">¶</a></dt>
 <dd><p>Called by the <cite>as_view</cite> class method when utilizing a component directly as a view.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.get_frontend_context_variables">
-<span class="sig-name descname"><span class="pre">get_frontend_context_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.get_frontend_context_variables" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.get_frontend_context_variables">
+<span class="sig-name descname"><span class="pre">get_frontend_context_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.get_frontend_context_variables" title="Link to this definition">¶</a></dt>
 <dd><p>Get publicly available properties and output them in a string-encoded JSON object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.get_context_data">
-<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.get_context_data" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.get_context_data" title="Link to this definition">¶</a></dt>
 <dd><p>Overrides the standard <cite>get_context_data</cite> to add in publicly available
 properties and methods.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.is_valid">
-<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.is_valid" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.is_valid" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.validate" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.validate" title="Link to this definition">¶</a></dt>
 <dd><p>Validates the data using the <cite>form_class</cite> set on the component.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -556,8 +647,8 @@ properties and methods.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.create">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView" title="django_unicorn.components.unicorn_view.UnicornView"><span class="pre">UnicornView</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">django.http.HttpRequest</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView" title="django_unicorn.components.unicorn_view.UnicornView"><span class="pre">UnicornView</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.create" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.create">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component" title="django_unicorn.components.unicorn_view.Component"><span class="pre">Component</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">django.http.HttpRequest</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component" title="django_unicorn.components.unicorn_view.Component"><span class="pre">Component</span></a></span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.create" title="Link to this definition">¶</a></dt>
 <dd><p>Find and instantiate a component class based on <cite>component_name</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -580,12 +671,17 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView.as_view">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">initkwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView.as_view" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.Component.as_view">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">as_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">initkwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.components.unicorn_view.Component.as_view" title="Link to this definition">¶</a></dt>
 <dd><p>Main entry point for a request-response process.</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="django_unicorn.components.unicorn_view.UnicornView">
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.components.unicorn_view.</span></span><span class="sig-name descname"><span class="pre">UnicornView</span></span><a class="headerlink" href="#django_unicorn.components.unicorn_view.UnicornView" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -600,7 +696,7 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.updaters</span></code></div>
+                <div class="title">django_unicorn.components.updaters</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -611,7 +707,7 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_template_response</span></code></div>
+                <div class="title">django_unicorn.components.unicorn_template_response</div>
                 
               </div>
             </a>
@@ -619,7 +715,7 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2023, Adam Hill
+                Copyright &#169; 2023-2026, Adam Hill
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -645,7 +741,7 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">django_unicorn.components.unicorn_view</span></code></a><ul>
+<li><a class="reference internal" href="#">django_unicorn.components.unicorn_view</a><ul>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#django_unicorn.components.unicorn_view.location_cache"><code class="docutils literal notranslate"><span class="pre">location_cache</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.components.unicorn_view.views_cache"><code class="docutils literal notranslate"><span class="pre">views_cache</span></code></a></li>
@@ -657,34 +753,45 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
 <li><a class="reference internal" href="#django_unicorn.components.unicorn_view.convert_to_pascal_case"><code class="docutils literal notranslate"><span class="pre">convert_to_pascal_case()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.components.unicorn_view.get_locations"><code class="docutils literal notranslate"><span class="pre">get_locations()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.components.unicorn_view.construct_component"><code class="docutils literal notranslate"><span class="pre">construct_component()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView"><code class="docutils literal notranslate"><span class="pre">UnicornView</span></code></a><ul>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.component_name"><code class="docutils literal notranslate"><span class="pre">UnicornView.component_name</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.component_key"><code class="docutils literal notranslate"><span class="pre">UnicornView.component_key</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.component_id"><code class="docutils literal notranslate"><span class="pre">UnicornView.component_id</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.component_args"><code class="docutils literal notranslate"><span class="pre">UnicornView.component_args</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.component_kwargs"><code class="docutils literal notranslate"><span class="pre">UnicornView.component_kwargs</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.reset"><code class="docutils literal notranslate"><span class="pre">UnicornView.reset()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.call"><code class="docutils literal notranslate"><span class="pre">UnicornView.call()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.mount"><code class="docutils literal notranslate"><span class="pre">UnicornView.mount()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.hydrate"><code class="docutils literal notranslate"><span class="pre">UnicornView.hydrate()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.complete"><code class="docutils literal notranslate"><span class="pre">UnicornView.complete()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.rendered"><code class="docutils literal notranslate"><span class="pre">UnicornView.rendered()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.parent_rendered"><code class="docutils literal notranslate"><span class="pre">UnicornView.parent_rendered()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.updating"><code class="docutils literal notranslate"><span class="pre">UnicornView.updating()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.updated"><code class="docutils literal notranslate"><span class="pre">UnicornView.updated()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.resolved"><code class="docutils literal notranslate"><span class="pre">UnicornView.resolved()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.calling"><code class="docutils literal notranslate"><span class="pre">UnicornView.calling()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.called"><code class="docutils literal notranslate"><span class="pre">UnicornView.called()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.render"><code class="docutils literal notranslate"><span class="pre">UnicornView.render()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.dispatch"><code class="docutils literal notranslate"><span class="pre">UnicornView.dispatch()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.get_frontend_context_variables"><code class="docutils literal notranslate"><span class="pre">UnicornView.get_frontend_context_variables()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.get_context_data"><code class="docutils literal notranslate"><span class="pre">UnicornView.get_context_data()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.is_valid"><code class="docutils literal notranslate"><span class="pre">UnicornView.is_valid()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.validate"><code class="docutils literal notranslate"><span class="pre">UnicornView.validate()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.create"><code class="docutils literal notranslate"><span class="pre">UnicornView.create()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView.as_view"><code class="docutils literal notranslate"><span class="pre">UnicornView.as_view()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a><ul>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_name"><code class="docutils literal notranslate"><span class="pre">Component.component_name</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_key"><code class="docutils literal notranslate"><span class="pre">Component.component_key</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_id"><code class="docutils literal notranslate"><span class="pre">Component.component_id</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_args"><code class="docutils literal notranslate"><span class="pre">Component.component_args</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_kwargs"><code class="docutils literal notranslate"><span class="pre">Component.component_kwargs</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.response_class"><code class="docutils literal notranslate"><span class="pre">Component.response_class</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.request"><code class="docutils literal notranslate"><span class="pre">Component.request</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.parent"><code class="docutils literal notranslate"><span class="pre">Component.parent</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.children"><code class="docutils literal notranslate"><span class="pre">Component.children</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.calls"><code class="docutils literal notranslate"><span class="pre">Component.calls</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.force_render"><code class="docutils literal notranslate"><span class="pre">Component.force_render</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.component_cache_key"><code class="docutils literal notranslate"><span class="pre">Component.component_cache_key</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.errors"><code class="docutils literal notranslate"><span class="pre">Component.errors</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.reset"><code class="docutils literal notranslate"><span class="pre">Component.reset()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.call"><code class="docutils literal notranslate"><span class="pre">Component.call()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.mount"><code class="docutils literal notranslate"><span class="pre">Component.mount()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.hydrate"><code class="docutils literal notranslate"><span class="pre">Component.hydrate()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.complete"><code class="docutils literal notranslate"><span class="pre">Component.complete()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.rendered"><code class="docutils literal notranslate"><span class="pre">Component.rendered()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.parent_rendered"><code class="docutils literal notranslate"><span class="pre">Component.parent_rendered()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.updating"><code class="docutils literal notranslate"><span class="pre">Component.updating()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.updated"><code class="docutils literal notranslate"><span class="pre">Component.updated()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.resolved"><code class="docutils literal notranslate"><span class="pre">Component.resolved()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.calling"><code class="docutils literal notranslate"><span class="pre">Component.calling()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.called"><code class="docutils literal notranslate"><span class="pre">Component.called()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.pre_parse"><code class="docutils literal notranslate"><span class="pre">Component.pre_parse()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.post_parse"><code class="docutils literal notranslate"><span class="pre">Component.post_parse()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.render"><code class="docutils literal notranslate"><span class="pre">Component.render()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.dispatch"><code class="docutils literal notranslate"><span class="pre">Component.dispatch()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.get_frontend_context_variables"><code class="docutils literal notranslate"><span class="pre">Component.get_frontend_context_variables()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.get_context_data"><code class="docutils literal notranslate"><span class="pre">Component.get_context_data()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.is_valid"><code class="docutils literal notranslate"><span class="pre">Component.is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.validate"><code class="docutils literal notranslate"><span class="pre">Component.validate()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.create"><code class="docutils literal notranslate"><span class="pre">Component.create()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.Component.as_view"><code class="docutils literal notranslate"><span class="pre">Component.as_view()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#django_unicorn.components.unicorn_view.UnicornView"><code class="docutils literal notranslate"><span class="pre">UnicornView</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -698,15 +805,12 @@ Raises <cite>ComponentModuleLoadError</cite> or <cite>ComponentClassLoadError</c
       
     </aside>
   </div>
-</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../../_static/scripts/furo.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/design-tabs.js"></script>
+</div><script src="../../../../_static/documentation_options.js?v=e3d116f3"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
     </body>
 </html>
