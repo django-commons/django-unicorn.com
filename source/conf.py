@@ -1,23 +1,17 @@
-import toml
+from importlib import metadata
 
 # -- Project information -----------------------------------------------------
 
 project = "Unicorn"
-copyright = "2023, Adam Hill"  # noqa: A001
+copyright = "2023-2026, Adam Hill"  # noqa: A001
 author = "Adam Hill"
 
 try:
-    pyproject = toml.load("../../pyproject.toml")
+    version = metadata.version("django-unicorn")
+except ImportError:
+    # If the package is not installed, fallback to a placeholder
+    version = "dev"
 
-    autoapi_dirs = ["../../django_unicorn"]
-except FileNotFoundError:
-    pyproject = toml.load("../../django-unicorn/pyproject.toml")
-
-    autoapi_dirs = [
-        "../../django-unicorn/django_unicorn",
-    ]
-
-version = pyproject["tool"]["poetry"]["version"]
 release = version
 
 
@@ -141,7 +135,7 @@ pdf_documents = [
 ]
 
 autoapi_dirs = [
-    "../../django-unicorn/django_unicorn",
+    "../../django-unicorn/src/django_unicorn",
 ]
 autoapi_root = "api"
 autoapi_add_toctree_entry = False
@@ -154,12 +148,15 @@ autoapi_options = [
 ]
 autoapi_type = "python"
 autodoc_typehints = "signature"
+suppress_warnings = ["autoapi.python_import_resolution", "ref.python"]
 
 
 def skip_member(app, what, name, obj, skip, options):  # noqa: ARG001
     if what == "data" and name.endswith(".logger"):
         skip = True
     elif "startunicorn" in name:
+        skip = True
+    elif name == "django_unicorn.views.message" and what == "function":
         skip = True
 
     return skip
