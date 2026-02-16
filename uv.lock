@@ -325,8 +325,8 @@ wheels = [
 
 [[package]]
 name = "django-docs"
-version = "0.3.1"
-source = { git = "https://github.com/littlepea/django-docs?rev=08912dac5d589ef57812a6cfdccb8398a57f0da7#08912dac5d589ef57812a6cfdccb8398a57f0da7" }
+version = "0.3.3"
+source = { git = "https://github.com/adamghill/django-docs?rev=3658e8bd7b454d4f880c8a7cb24799994d22d368#3658e8bd7b454d4f880c8a7cb24799994d22d368" }
 dependencies = [
     { name = "django", version = "5.2.11", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "django", version = "6.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
@@ -427,7 +427,7 @@ requires-dist = [
     { name = "django", specifier = ">=3.1.0" },
     { name = "django-cache-memoize", specifier = ">=0.1.7" },
     { name = "django-compressor", specifier = ">=2.4" },
-    { name = "django-docs", git = "https://github.com/littlepea/django-docs?rev=08912dac5d589ef57812a6cfdccb8398a57f0da7" },
+    { name = "django-docs", git = "https://github.com/adamghill/django-docs?rev=3658e8bd7b454d4f880c8a7cb24799994d22d368" },
     { name = "django-fbv", specifier = "<1" },
     { name = "django-redis", specifier = ">=4.12.1" },
     { name = "django-unicorn", specifier = "==0.42.0" },

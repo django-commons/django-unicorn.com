@@ -80,7 +80,7 @@ STATICFILES_FINDERS = (
     "compressor.finders.CompressorFinder",
 )
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), os.path.join(BASE_DIR, "docs", "_static"))
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False
