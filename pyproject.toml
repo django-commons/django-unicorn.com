@@ -13,7 +13,7 @@ dependencies = [
     "gunicorn>=20.0.4",
     "whitenoise>=5.1.0",
     "django-compressor>=2.4",
-    "django-unicorn==0.42.0",
+    "django-unicorn==0.62.0",
     "django-cache-memoize>=0.1.7",
     "django-redis>=4.12.1",
     "httpx>=0.14.2",
