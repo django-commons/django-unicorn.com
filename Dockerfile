@@ -1,18 +1,13 @@
 # Creating a python base with shared environment variables
-FROM python:3.10.8-slim as python-base
+FROM python:3.12-slim as python-base
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_DEFAULT_TIMEOUT=100 \
-    POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_IN_PROJECT=true \
-    POETRY_NO_INTERACTION=1 \
-    PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv"
+    UV_PROJECT_ENVIRONMENT="/opt/venv"
 
-ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
-
+ENV PATH="$UV_PROJECT_ENVIRONMENT/bin:$PATH"
 
 # builder-base is used to build dependencies
 FROM python-base as builder-base
@@ -21,22 +16,20 @@ RUN apt-get update \
         curl \
         build-essential
 
-# Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-ENV POETRY_VERSION=1.2.2
-RUN curl -sSL https://install.python-poetry.org | python3 -
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # We copy our Python requirements here to cache them
-# and install only runtime deps using poetry
-WORKDIR $PYSETUP_PATH
-COPY ./poetry.lock ./pyproject.toml ./
-RUN poetry install --only main
-
+# and install only runtime deps using uv
+WORKDIR /app
+COPY uv.lock pyproject.toml ./
+RUN uv sync --frozen --no-dev --no-install-project
 
 # 'production' stage uses the clean 'python-base' stage and copies
 # in only our runtime deps that were installed in the 'builder-base'
 FROM python-base as production
 
-COPY --from=builder-base $VENV_PATH $VENV_PATH
+COPY --from=builder-base /opt/venv /opt/venv
 
 COPY . /app
 WORKDIR /app
@@ -52,4 +45,4 @@ HEALTHCHECK --interval=1m --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://0.0.0.0:80/ || exit 1
 
 # Run gunicorn
-CMD ["gunicorn", "project.wsgi", "--config="gunicorn.conf.py"]
+CMD ["gunicorn", "project.wsgi", "--config=gunicorn.conf.py"]

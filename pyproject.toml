@@ -1,51 +1,63 @@
-[tool.poetry]
+[project]
 name = "django-unicorn.com"
 version = "0.1.0"
 description = "Documentation of django-unicorn"
-authors = ["Adam Hill"]
-license = "MIT"
+authors = [
+    { name = "Adam Hill", email = "adamghill@gmail.com" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "django>=3.1.0",
+    "python-dotenv>=0.14.0",
+    "gunicorn>=20.0.4",
+    "whitenoise>=5.1.0",
+    "django-compressor>=2.4",
+    "django-unicorn==0.42.0",
+    "django-cache-memoize>=0.1.7",
+    "django-redis>=4.12.1",
+    "httpx>=0.14.2",
+    "sentry-sdk>=0",
+    "django-docs @ git+https://github.com/littlepea/django-docs@08912dac5d589ef57812a6cfdccb8398a57f0da7",
+    "django-fbv<1",
+]
 
-[tool.poetry.dependencies]
-python = ">3.7,<4"
-django = "^3.1.0"
-python-dotenv = "^0.14.0"
-gunicorn = "^20.0.4"
-whitenoise = "^5.1.0"
-django-compressor = "^2.4"
-django-unicorn = "0.42.0"
-django-cache-memoize = "^0.1.7"
-django-redis = "^4.12.1"
-httpx = "^0.14.2"
-sentry-sdk = "^0"
-django-docs = {git = "https://github.com/littlepea/django-docs", rev = "08912dac5d589ef57812a6cfdccb8398a57f0da7"}
-django-fbv = "<1"
+[dependency-groups]
+dev = [
+    "Sphinx",
+    "linkify-it-py",
+    "myst-parser",
+    "furo",
+    "sphinx-copybutton",
+    "sphinx-autobuild",
+    "rst2pdf",
+    "sphinx-autoapi",
+    "sphinxext-opengraph",
+    "toml",
+    "sphinx-design",
+    "ruff",
+    "ty",
+    "pytest",
+    "pytest-django",
+]
 
-[tool.poetry.group.dev.dependencies]
-Sphinx = "*"
-linkify-it-py = "*"
-myst-parser = "*"
-furo = "*"
-sphinx-copybutton = "*"
-sphinx-autobuild = "*"
-rst2pdf = "*"
-sphinx-autoapi = "*"
-sphinxext-opengraph = "*"
-toml = "*"
-sphinx-design = "*"
+[tool.ruff]
+line-length = 120
+target-version = "py310"
 
-[tool.poe.tasks]
-r = { cmd = "./manage.py runserver 0:8000", help = "Run the dev server" }
-mm = { cmd = "./manage.py makemigrations", help = "Make migrations" }
-m = { cmd = "./manage.py migrate", help = "Migrate" }
-md = ["mm", "m"]
-ma = { cmd = "./manage.py", help = "manage.py" }
-t = { cmd = "pytest", help = "Run tests" }
-cd = { shell = "rm -f 'source/*.md' && cp ../django-unicorn/docs/source/*.md source/ && cp ../django-unicorn/docs/source/conf.py source/", help = "Copy docs" }
-sp = { cmd = "sphinx-build -E -a -b pdf source docs", help = "Build PDF documentation" }
-sa = { cmd = "sphinx-autobuild -b dirhtml source docs", help = "Build documentation and host at localhost:8000" }
-sb = { cmd = "sphinx-build -E -a -b dirhtml source docs", help = "Build documentation" }
-l = ["cd", "sb", "r"]
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ty]
+type_checker = "pyright"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["project", "unicorn", "www"]
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
