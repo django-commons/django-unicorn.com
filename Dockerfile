@@ -45,7 +45,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,t
     ENVIRONMENT=live SECRET_KEY=dummy python manage.py compress
 
 HEALTHCHECK --interval=1m --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:80/ || exit 1
+  CMD curl -fs http://localhost:80/ > /dev/null || exit 1
 
 # Run gunicorn
 CMD ["gunicorn", "project.wsgi", "--config=gunicorn.conf.py"]
