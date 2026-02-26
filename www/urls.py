@@ -32,5 +32,5 @@ urlpatterns = [
     ),
     # sphinx-generated documentation
     re_path(r"docs/(?P<name>[\w-]+[^/])$", views.docs_redirect),
-    path("docs/", include("docs.urls")),
+    path("docs/", include("django_sphinx_docs.urls")),
 ]
