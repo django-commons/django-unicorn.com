@@ -324,15 +324,6 @@ wheels = [
 ]
 
 [[package]]
-name = "django-docs"
-version = "0.3.3"
-source = { git = "https://github.com/adamghill/django-docs?rev=3658e8bd7b454d4f880c8a7cb24799994d22d368#3658e8bd7b454d4f880c8a7cb24799994d22d368" }
-dependencies = [
-    { name = "django", version = "5.2.11", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "django", version = "6.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-]
-
-[[package]]
 name = "django-fbv"
 version = "0.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -358,6 +349,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/08/53/dbcfa1e528e0d6c39947092625b2c89274b5d88f14d357cee53c4d6dbbd4/django_redis-6.0.0.tar.gz", hash = "sha256:2d9cb12a20424a4c4dde082c6122f486628bae2d9c2bee4c0126a4de7fda00dd", size = 56904, upload-time = "2025-06-17T18:15:46.376Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7e/79/055dfcc508cfe9f439d9f453741188d633efa9eab90fc78a67b0ab50b137/django_redis-6.0.0-py3-none-any.whl", hash = "sha256:20bf0063a8abee567eb5f77f375143c32810c8700c0674ced34737f8de4e36c0", size = 33687, upload-time = "2025-06-17T18:15:34.165Z" },
+]
+
+[[package]]
+name = "django-sphinx-docs"
+version = "0.4.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django", version = "5.2.11", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "django", version = "6.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/44/d6/1ac32ff61affc826e59f5309056cef808ee5668ddd4eb2bf334befb3ff5b/django_sphinx_docs-0.4.1.tar.gz", hash = "sha256:eb220566ae371f958bae4cf7913371084ce03e97e3f4be31250cd53bfe55e073", size = 29257, upload-time = "2026-02-20T12:40:08.045Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/54/fd85c5f50d6320f8bf7ac9755e8c4a409b105b148552f4adfc5f3aad0ccf/django_sphinx_docs-0.4.1-py3-none-any.whl", hash = "sha256:8a39e7e7b92633fcad585745d4a05d4037c76025ee9eaf66b05f26f7664e846b", size = 6212, upload-time = "2026-02-20T12:40:06.614Z" },
 ]
 
 [[package]]
@@ -387,9 +391,9 @@ dependencies = [
     { name = "django", version = "6.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "django-cache-memoize" },
     { name = "django-compressor" },
-    { name = "django-docs" },
     { name = "django-fbv" },
     { name = "django-redis" },
+    { name = "django-sphinx-docs" },
     { name = "django-unicorn" },
     { name = "gunicorn" },
     { name = "httpx" },
@@ -427,9 +431,9 @@ requires-dist = [
     { name = "django", specifier = ">=3.1.0" },
     { name = "django-cache-memoize", specifier = ">=0.1.7" },
     { name = "django-compressor", specifier = ">=2.4" },
-    { name = "django-docs", git = "https://github.com/adamghill/django-docs?rev=3658e8bd7b454d4f880c8a7cb24799994d22d368" },
     { name = "django-fbv", specifier = "<1" },
     { name = "django-redis", specifier = ">=4.12.1" },
+    { name = "django-sphinx-docs", specifier = ">=0.4.1" },
     { name = "django-unicorn", specifier = ">=0.65.2" },
     { name = "gunicorn", specifier = ">=20.0.4" },
     { name = "httpx", specifier = ">=0.14.2" },

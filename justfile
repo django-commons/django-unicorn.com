@@ -1,51 +1,34 @@
-# Run the dev server
-r:
-    uv run ./manage.py runserver 0:8000
+import? 'adamghill.justfile'
+import? '../dotfiles/just/justfile'
 
-# Make migrations
-mm:
-    uv run ./manage.py makemigrations
+src := "."
 
-# Migrate
-m:
-    uv run ./manage.py migrate
+# List commands
+_default:
+    just --list --unsorted --justfile {{ justfile() }} --list-heading $'Available commands:\n'
 
-# Make and migrate
-md: mm m
-
-# Run manage.py with arguments
-ma *args:
-    uv run ./manage.py {{args}}
-
-# Run tests
-t:
-    uv run pytest
+# Grab default `adamghill.justfile` from GitHub
+fetch:
+  curl https://raw.githubusercontent.com/adamghill/dotfiles/master/just/justfile > adamghill.justfile
 
 # Copy docs
-cd:
+docs-copy:
     rm -f 'source/*.md'
     cp ../django-unicorn/docs/source/*.md source/
     cp ../django-unicorn/docs/source/conf.py source/
+    # cp source/changelog.md docs/source/changelog.md
 
 # Build PDF documentation
-sp:
+docs-build-pdf:
     uv run sphinx-build -E -a -b pdf source docs
 
 # Build documentation and host at localhost:8000
-sa:
+docs-only-serve:
     uv run sphinx-autobuild -b dirhtml source docs
 
 # Build documentation
-sb:
+docs-build:
     uv run sphinx-build -E -a -b dirhtml source docs
 
 # Copy docs, build, and run
-l: cd sb r
-
-# Run ruff check
-ruff:
-    uv run ruff check .
-
-# Run ty type checking
-ty:
-    uv run ty
+docs-serve: docs-copy docs-build serve

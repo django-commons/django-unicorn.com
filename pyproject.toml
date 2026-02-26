@@ -18,7 +18,7 @@ dependencies = [
     "django-redis>=4.12.1",
     "httpx>=0.14.2",
     "sentry-sdk>=0",
-    "django-docs @ git+https://github.com/adamghill/django-docs@3658e8bd7b454d4f880c8a7cb24799994d22d368",
+    "django-sphinx-docs>=0.4.1",
     "django-fbv<1",
 ]
 
