@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -415,9 +421,17 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="django_unicorn.utils.dicts_equal">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.utils.</span></span><span class="sig-name descname"><span class="pre">dicts_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary_one</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictionary_two</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#django_unicorn.utils.dicts_equal" title="Link to this definition">¶</a></dt>
-<dd><p>Return True if all keys and values are the same between two dictionaries.</p>
+<dt class="sig sig-object py" id="django_unicorn.utils.parse_meta">
+<span class="sig-prename descclassname"><span class="pre">django_unicorn.utils.</span></span><span class="sig-name descname"><span class="pre">parse_meta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#django_unicorn.utils.parse_meta" title="Link to this definition">¶</a></dt>
+<dd><p>Parses a consolidated metadata string into its component parts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>meta_string</strong> – The consolidated string, e.g. “checksum:hash:epoch”.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of (checksum, hash, epoch).</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -522,7 +536,7 @@ Helpful when you expect to loop over <cite>obj</cite>, but explicitly don’t wa
 <li><a class="reference internal" href="#django_unicorn.utils.function_signature_cache"><code class="docutils literal notranslate"><span class="pre">function_signature_cache</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.utils.html_element_to_string"><code class="docutils literal notranslate"><span class="pre">html_element_to_string()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.utils.generate_checksum"><code class="docutils literal notranslate"><span class="pre">generate_checksum()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.utils.dicts_equal"><code class="docutils literal notranslate"><span class="pre">dicts_equal()</span></code></a></li>
+<li><a class="reference internal" href="#django_unicorn.utils.parse_meta"><code class="docutils literal notranslate"><span class="pre">parse_meta()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.utils.get_method_arguments"><code class="docutils literal notranslate"><span class="pre">get_method_arguments()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.utils.sanitize_html"><code class="docutils literal notranslate"><span class="pre">sanitize_html()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.utils.is_non_string_sequence"><code class="docutils literal notranslate"><span class="pre">is_non_string_sequence()</span></code></a></li>
@@ -541,7 +555,7 @@ Helpful when you expect to loop over <cite>obj</cite>, but explicitly don’t wa
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../../../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>

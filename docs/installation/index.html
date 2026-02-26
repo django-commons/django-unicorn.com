@@ -7,9 +7,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.django-unicorn.com/installation/" />
 <meta property="og:site_name" content="Unicorn" />
-<meta property="og:description" content="Install Unicorn: Install Unicorn the same as any other Python package (preferably into a virtual environment). pip poetry pdm rye pipenv Integrate Unicorn with Django: 1. Add django_unicorn to the ..." />
-<meta name="description" content="Install Unicorn: Install Unicorn the same as any other Python package (preferably into a virtual environment). pip poetry pdm rye pipenv Integrate Unicorn with Django: 1. Add django_unicorn to the ..." />
-<link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Components" href="../components/"><link rel="prev" title="Getting Started" href="../getting-started/">
+<meta property="og:description" content="Prerequisites: Unicorn requires a working Django project. If you don’t have one yet, follow the Getting Started guide to create a Django project first. This tutorial assumes you have: Python 3.8 or..." />
+<meta name="description" content="Prerequisites: Unicorn requires a working Django project. If you don’t have one yet, follow the Getting Started guide to create a Django project first. This tutorial assumes you have: Python 3.8 or..." />
+<link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Tutorial" href="../tutorial/"><link rel="prev" title="Getting Started" href="../getting-started/">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>Installation - Unicorn</title>
@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -387,6 +393,16 @@
         <article role="main" id="furo-main-content">
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> requires a working Django project. If you don’t have one yet, follow the <a class="reference internal" href="../getting-started/"><span class="std std-doc">Getting Started</span></a> guide to create a Django project first.</p>
+<p>This tutorial assumes you have:</p>
+<ul class="simple">
+<li><p>Python 3.8 or greater installed</p></li>
+<li><p>A Django project created and configured</p></li>
+<li><p>Basic familiarity with Django apps, views, and templates</p></li>
+</ul>
+</section>
 <section id="install-unicorn">
 <h2>Install <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code><a class="headerlink" href="#install-unicorn" title="Link to this heading">¶</a></h2>
 <p>Install <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> the same as any other Python package (preferably into a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environment</a>).</p>
@@ -443,7 +459,7 @@ pipenv</label><div class="sd-tab-content docutils">
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>2. Add <code class="docutils literal notranslate"><span class="pre">path(&quot;unicorn/&quot;,</span> <span class="pre">include(&quot;django_unicorn.urls&quot;)),</span></code>into the project’s<code class="docutils literal notranslate"><span class="pre">urls.py</span></code>.</p>
+<p>2. Add <code class="docutils literal notranslate"><span class="pre">path(&quot;unicorn/&quot;,</span> <span class="pre">include(&quot;django_unicorn.urls&quot;)),</span></code> into the project’s <code class="docutils literal notranslate"><span class="pre">urls.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># urls.py</span>
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">(</span>
     <span class="c1"># other urls</span>
@@ -451,25 +467,234 @@ pipenv</label><div class="sd-tab-content docutils">
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>3. Add <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">unicorn</span> <span class="pre">%}</span></code> to the top of the Django HTML template.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Generally, your Django HTML templates are typically created in the <code class="docutils literal notranslate"><span class="pre">myapp/templates/myapp</span></code> directory. You will need to add <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">unicorn</span> <span class="pre">%}</span></code> at the top of each of the templates utilizing a <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> component. Alternatively, you can create one “base” template that is extended by other templates, in which case, you would only need to add <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">unicorn</span> <span class="pre">%}</span></code> to the top of your base template.</p>
-</div>
-<p>4. Add <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">unicorn_scripts</span> <span class="pre">%}</span></code> into the Django HTML template and make sure there is a <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">csrf_token</span> <span class="pre">%}</span></code> in the template as well.</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- index.html --&gt;</span>
+<p>3. Set up your templates with Unicorn template tags.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> requires two template tags in any template that will use components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">load</span> <span class="pre">unicorn</span> <span class="pre">%}</span></code> - Loads the Unicorn template tags</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">unicorn_scripts</span> <span class="pre">%}</span></code> - Includes the JavaScript needed for Unicorn to work</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">csrf_token</span> <span class="pre">%}</span></code> - Required for security (standard Django requirement)</p></li>
+</ul>
+<p>You can add these to a base template that other templates extend, or to individual templates.</p>
+<p><strong>Option A: Base template (recommended)</strong></p>
+<p>Create or modify your base template (e.g., <code class="docutils literal notranslate"><span class="pre">templates/base.html</span></code>):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- templates/base.html --&gt;</span>
 {% load unicorn %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{% block title %}My App{% endblock %}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
     {% unicorn_scripts %}
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     {% csrf_token %}
+    {% block content %}{% endblock %}
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>Then, <a class="reference internal" href="../components/"><span class="std std-doc">create a component</span></a>.</p>
+<p>Then extend this template in your pages:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- myapp/templates/myapp/index.html --&gt;</span>
+{% extends &quot;base.html&quot; %}
+
+{% block content %}
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- Your Unicorn components will go here --&gt;</span>
+{% endblock %}
+</pre></div>
+</div>
+<p><strong>Option B: Individual templates</strong></p>
+<p>If you prefer not to use a base template, add the tags to each template that uses Unicorn components:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- myapp/templates/myapp/index.html --&gt;</span>
+{% load unicorn %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    {% unicorn_scripts %}
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    {% csrf_token %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- Your Unicorn components will go here --&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="create-your-first-component">
+<h2>Create your first component<a class="headerlink" href="#create-your-first-component" title="Link to this heading">¶</a></h2>
+<p>Let’s create a complete working example. This section will guide you through creating a simple “Hello World” component.</p>
+<section id="create-a-django-app-if-needed">
+<h3>1. Create a Django app (if needed)<a class="headerlink" href="#create-a-django-app-if-needed" title="Link to this heading">¶</a></h3>
+<p>If you don’t already have a Django app in your project, create one:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>myapp
+</pre></div>
+</div>
+<p>Add it to <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in your <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django_unicorn&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-view-and-template">
+<h3>2. Create a view and template<a class="headerlink" href="#create-a-view-and-template" title="Link to this heading">¶</a></h3>
+<p>Create a view that will render a page containing your Unicorn component:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># myapp/views.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;myapp/index.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create the template directory structure if it doesn’t exist, then create the template with Unicorn tags:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- myapp/templates/myapp/index.html --&gt;</span>
+{% load unicorn %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My First Unicorn Component<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    {% unicorn_scripts %}
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    {% csrf_token %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My First Unicorn Component<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    
+    <span class="cm">&lt;!-- We&#39;ll add our component here in step 4 --&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="add-a-url-pattern">
+<h3>3. Add a URL pattern<a class="headerlink" href="#add-a-url-pattern" title="Link to this heading">¶</a></h3>
+<p>Add a URL pattern for your view. Create <code class="docutils literal notranslate"><span class="pre">myapp/urls.py</span></code> if it doesn’t exist:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># myapp/urls.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Include your app’s URLs in the project’s main <code class="docutils literal notranslate"><span class="pre">urls.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># project/urls.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;unicorn/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;django_unicorn.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;myapp.urls&#39;</span><span class="p">)),</span>  <span class="c1"># Add this line</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-unicorn-component">
+<h3>4. Create a Unicorn component<a class="headerlink" href="#create-a-unicorn-component" title="Link to this heading">¶</a></h3>
+<p>Now use the <code class="docutils literal notranslate"><span class="pre">startunicorn</span></code> management command to create your first component:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>startunicorn<span class="w"> </span>myapp<span class="w"> </span>hello-world
+</pre></div>
+</div>
+<p>This creates the following files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myapp</span><span class="o">/</span>
+    <span class="n">components</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">hello_world</span><span class="o">.</span><span class="n">py</span>          <span class="c1"># Python view class</span>
+    <span class="n">templates</span><span class="o">/</span>
+        <span class="n">myapp</span><span class="o">/</span>
+            <span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="n">html</span>    <span class="c1"># Component template</span>
+</pre></div>
+</div>
+<p>The generated files contain:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># myapp/components/hello_world.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;World&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- myapp/templates/myapp/hello-world.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">unicorn:model</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+    Hello {{ name|title }}!
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="use-the-component-in-your-template">
+<h3>5. Use the component in your template<a class="headerlink" href="#use-the-component-in-your-template" title="Link to this heading">¶</a></h3>
+<p>Add the component to your page template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- myapp/templates/myapp/index.html --&gt;</span>
+{% load unicorn %}
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My First Unicorn Component<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    {% unicorn_scripts %}
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    {% csrf_token %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My First Unicorn Component<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    
+    {% unicorn &#39;hello-world&#39; %}
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-development-server">
+<h3>6. Run the development server<a class="headerlink" href="#run-the-development-server" title="Link to this heading">¶</a></h3>
+<p>Start your Django development server:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</pre></div>
+</div>
+<p>Visit <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000/</span></code> in your browser. You should see an input field with “World” in it, and text below saying “Hello World!”. When you type in the input field, the text updates automatically - that’s Unicorn in action! ✨</p>
+</section>
+<section id="project-structure">
+<h3>Project structure<a class="headerlink" href="#project-structure" title="Link to this heading">¶</a></h3>
+<p>After completing these steps, your project structure should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>myproject/
+├── myproject/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── myapp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── components/
+│   │   ├── __init__.py
+│   │   └── hello_world.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── templates/
+│   │   └── myapp/
+│   │       ├── index.html
+│   │       └── hello-world.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── manage.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
+<p>Now that you have a working Unicorn component, you can:</p>
+<ul class="simple">
+<li><p>Learn more about <a class="reference internal" href="../components/"><span class="std std-doc">components</span></a> and their capabilities</p></li>
+<li><p>Explore <a class="reference internal" href="../actions/"><span class="std std-doc">actions</span></a> to handle user interactions</p></li>
+<li><p>Understand <a class="reference internal" href="../views/"><span class="std std-doc">views</span></a> to add backend logic</p></li>
+<li><p>Check out the <a class="reference external" href="https://github.com/adamghill/django-unicorn/tree/main/example">example project</a> for more complex examples</p></li>
+</ul>
 </section>
 </section>
 
@@ -478,12 +703,12 @@ pipenv</label><div class="sd-tab-content docutils">
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../components/">
+          <a class="next-page" href="../tutorial/">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Components</div>
+                <div class="title">Tutorial</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -529,8 +754,20 @@ pipenv</label><div class="sd-tab-content docutils">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li><a class="reference internal" href="#install-unicorn">Install <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code></a></li>
 <li><a class="reference internal" href="#integrate-unicorn-with-django">Integrate <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> with Django</a></li>
+<li><a class="reference internal" href="#create-your-first-component">Create your first component</a><ul>
+<li><a class="reference internal" href="#create-a-django-app-if-needed">1. Create a Django app (if needed)</a></li>
+<li><a class="reference internal" href="#create-a-view-and-template">2. Create a view and template</a></li>
+<li><a class="reference internal" href="#add-a-url-pattern">3. Add a URL pattern</a></li>
+<li><a class="reference internal" href="#create-a-unicorn-component">4. Create a Unicorn component</a></li>
+<li><a class="reference internal" href="#use-the-component-in-your-template">5. Use the component in your template</a></li>
+<li><a class="reference internal" href="#run-the-development-server">6. Run the development server</a></li>
+<li><a class="reference internal" href="#project-structure">Project structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#next-steps">Next steps</a></li>
 </ul>
 </li>
 </ul>
@@ -542,7 +779,7 @@ pipenv</label><div class="sd-tab-content docutils">
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

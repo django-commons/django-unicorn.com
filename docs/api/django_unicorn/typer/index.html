@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -405,11 +411,6 @@
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="django_unicorn.typer.function_signature_cache">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.typer.</span></span><span class="sig-name descname"><span class="pre">function_signature_cache</span></span><a class="headerlink" href="#django_unicorn.typer.function_signature_cache" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="django_unicorn.typer.CASTERS">
 <span class="sig-prename descclassname"><span class="pre">django_unicorn.typer.</span></span><span class="sig-name descname"><span class="pre">CASTERS</span></span><a class="headerlink" href="#django_unicorn.typer.CASTERS" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -439,17 +440,6 @@
 <dt class="sig sig-object py" id="django_unicorn.typer.cast_attribute_value">
 <span class="sig-prename descclassname"><span class="pre">django_unicorn.typer.</span></span><span class="sig-name descname"><span class="pre">cast_attribute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#django_unicorn.typer.cast_attribute_value" title="Link to this definition">¶</a></dt>
 <dd><p>Try to cast the value of an object’s attribute based on the type hint.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="django_unicorn.typer.get_method_arguments">
-<span class="sig-prename descclassname"><span class="pre">django_unicorn.typer.</span></span><span class="sig-name descname"><span class="pre">get_method_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#django_unicorn.typer.get_method_arguments" title="Link to this definition">¶</a></dt>
-<dd><p>Gets the arguments for a method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of strings, one for each argument.</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -540,12 +530,10 @@ value: JSON.</p>
 <li><a class="reference internal" href="#django_unicorn.typer.UnionType"><code class="docutils literal notranslate"><span class="pre">UnionType</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.get_args"><code class="docutils literal notranslate"><span class="pre">get_args()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.type_hints_cache"><code class="docutils literal notranslate"><span class="pre">type_hints_cache</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.typer.function_signature_cache"><code class="docutils literal notranslate"><span class="pre">function_signature_cache</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.CASTERS"><code class="docutils literal notranslate"><span class="pre">CASTERS</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.get_type_hints"><code class="docutils literal notranslate"><span class="pre">get_type_hints()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.cast_value"><code class="docutils literal notranslate"><span class="pre">cast_value()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.cast_attribute_value"><code class="docutils literal notranslate"><span class="pre">cast_attribute_value()</span></code></a></li>
-<li><a class="reference internal" href="#django_unicorn.typer.get_method_arguments"><code class="docutils literal notranslate"><span class="pre">get_method_arguments()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.is_queryset"><code class="docutils literal notranslate"><span class="pre">is_queryset()</span></code></a></li>
 <li><a class="reference internal" href="#django_unicorn.typer.create_queryset"><code class="docutils literal notranslate"><span class="pre">create_queryset()</span></code></a></li>
 </ul>
@@ -561,7 +549,7 @@ value: JSON.</p>
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../../../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>

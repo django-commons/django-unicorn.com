@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -391,6 +397,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> requires there to be one root element that contains the component HTML. Valid HTML and a wrapper element is required for the DOM diffing algorithm to work correctly, so <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> will try to log a warning message if they seem invalid.</p>
+<p>One common issue is when a component is a table row (<code class="docutils literal notranslate"><span class="pre">tr</span></code>). Since <code class="docutils literal notranslate"><span class="pre">tr</span></code> elements can only contain <code class="docutils literal notranslate"><span class="pre">td</span></code> or <code class="docutils literal notranslate"><span class="pre">th</span></code> elements, any other element (like a <code class="docutils literal notranslate"><span class="pre">div</span></code>) will be “foster parented” out of the table structure by the browser. This will cause the DOM diffing to fail since the element structure is not what <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> expects.</p>
 <p>For example, this is an <strong>invalid</strong> template:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">unicorn:model</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
 Name: {{ name }}
@@ -593,6 +600,88 @@ Name: {{ name }}
 </pre></div>
 </div>
 </section>
+<section id="context-processors-and-component-re-rendering">
+<h2>Context Processors and Component Re-rendering<a class="headerlink" href="#context-processors-and-component-re-rendering" title="Link to this heading">¶</a></h2>
+<p>Django context processors are executed when Django builds a <code class="docutils literal notranslate"><span class="pre">RequestContext</span></code>
+during a full template render. Because django-unicorn performs partial,
+component-level rendering, context processors are <strong>not automatically re-run</strong>
+during component updates or when <code class="docutils literal notranslate"><span class="pre">force_render</span></code> is used.</p>
+<section id="understanding-the-difference">
+<h3>Understanding the Difference<a class="headerlink" href="#understanding-the-difference" title="Link to this heading">¶</a></h3>
+<p>In a traditional Django request/response cycle:</p>
+<ol class="arabic simple">
+<li><p>A request is received</p></li>
+<li><p>A view prepares context data</p></li>
+<li><p>Context processors run</p></li>
+<li><p>The template is rendered</p></li>
+</ol>
+<p>In django-unicorn, component updates work differently:</p>
+<ol class="arabic simple">
+<li><p>A request triggers a component action</p></li>
+<li><p>The component state is updated</p></li>
+<li><p>Only the component template is re-rendered</p></li>
+<li><p>The DOM is patched with the updated HTML</p></li>
+</ol>
+<p>Since django-unicorn does not rebuild the full Django template rendering
+pipeline for component updates, context processors are not executed again.</p>
+</section>
+<section id="force-render-behavior">
+<h3>Force Render Behavior<a class="headerlink" href="#force-render-behavior" title="Link to this heading">¶</a></h3>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">force_render</span> <span class="pre">=</span> <span class="pre">True</span></code> on a component or parent component triggers a
+template re-evaluation using the existing component state. It does <strong>not</strong>
+recreate the full Django <code class="docutils literal notranslate"><span class="pre">RequestContext</span></code> and does not re-run context processors.</p>
+<p>This is intentional and helps maintain performance by avoiding unnecessary
+recomputation and database queries.</p>
+</section>
+<section id="recommended-patterns">
+<h3>Recommended Patterns<a class="headerlink" href="#recommended-patterns" title="Link to this heading">¶</a></h3>
+<p>If you need values from settings or global context to persist across component
+updates, consider one of the following approaches.</p>
+<section id="store-values-in-component-state">
+<h4>Store Values in Component State<a class="headerlink" href="#store-values-in-component-state" title="Link to this heading">¶</a></h4>
+<p>Instead of relying on context processors, store values directly in the component:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="n">my_flag</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">MY_FLAG</span>
+</pre></div>
+</div>
+</section>
+<section id="use-lifecycle-hooks">
+<h4>Use Lifecycle Hooks<a class="headerlink" href="#use-lifecycle-hooks" title="Link to this heading">¶</a></h4>
+<p>If values must be refreshed periodically, update them during lifecycle events:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hydrate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">my_flag</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">MY_FLAG</span>
+</pre></div>
+</div>
+</section>
+<section id="pass-values-explicitly">
+<h4>Pass Values Explicitly<a class="headerlink" href="#pass-values-explicitly" title="Link to this heading">¶</a></h4>
+<p>If using nested components, pass values through component parameters rather
+than relying on template context.</p>
+</section>
+</section>
+<section id="when-to-use-context-processors">
+<h3>When to Use Context Processors<a class="headerlink" href="#when-to-use-context-processors" title="Link to this heading">¶</a></h3>
+<p>Context processors are still useful for:</p>
+<ul class="simple">
+<li><p>Initial page rendering</p></li>
+<li><p>Global template values shared across many pages</p></li>
+<li><p>Request-specific data (e.g., user, permissions)</p></li>
+</ul>
+<p>However, they should not be relied upon for reactive UI state inside components.</p>
+</section>
+<section id="performance-considerations">
+<h3>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading">¶</a></h3>
+<p>Context processors run during template rendering and may execute database
+queries or other expensive operations. Automatically running them during every
+component update would negatively impact performance and network efficiency.</p>
+<p>For this reason, django-unicorn keeps component rendering separate from Django’s
+request-level context processing.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -670,6 +759,19 @@ Name: {{ name }}
 </ul>
 </li>
 <li><a class="reference internal" href="#ignore-elements">Ignore elements</a></li>
+<li><a class="reference internal" href="#context-processors-and-component-re-rendering">Context Processors and Component Re-rendering</a><ul>
+<li><a class="reference internal" href="#understanding-the-difference">Understanding the Difference</a></li>
+<li><a class="reference internal" href="#force-render-behavior">Force Render Behavior</a></li>
+<li><a class="reference internal" href="#recommended-patterns">Recommended Patterns</a><ul>
+<li><a class="reference internal" href="#store-values-in-component-state">Store Values in Component State</a></li>
+<li><a class="reference internal" href="#use-lifecycle-hooks">Use Lifecycle Hooks</a></li>
+<li><a class="reference internal" href="#pass-values-explicitly">Pass Values Explicitly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#when-to-use-context-processors">When to Use Context Processors</a></li>
+<li><a class="reference internal" href="#performance-considerations">Performance Considerations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -681,7 +783,7 @@ Name: {{ name }}
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

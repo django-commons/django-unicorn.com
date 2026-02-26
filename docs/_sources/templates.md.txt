@@ -5,6 +5,8 @@ Templates are normal Django HTML templates, so anything you could normally do in
 ```{warning}
 `Unicorn` requires there to be one root element that contains the component HTML. Valid HTML and a wrapper element is required for the DOM diffing algorithm to work correctly, so `Unicorn` will try to log a warning message if they seem invalid.
 
+One common issue is when a component is a table row (`tr`). Since `tr` elements can only contain `td` or `th` elements, any other element (like a `div`) will be "foster parented" out of the table structure by the browser. This will cause the DOM diffing to fail since the element structure is not what `Unicorn` expects.
+
 For example, this is an **invalid** template:
 :::{code} html
 :force: true
@@ -232,3 +234,90 @@ class JsView(UnicornView):
         print("select_state selected_idx", selected_idx)
         self.selected_state = state_name
 ```
+
+## Context Processors and Component Re-rendering
+
+Django context processors are executed when Django builds a `RequestContext`
+during a full template render. Because django-unicorn performs partial,
+component-level rendering, context processors are **not automatically re-run**
+during component updates or when `force_render` is used.
+
+### Understanding the Difference
+
+In a traditional Django request/response cycle:
+
+1. A request is received
+2. A view prepares context data
+3. Context processors run
+4. The template is rendered
+
+In django-unicorn, component updates work differently:
+
+1. A request triggers a component action
+2. The component state is updated
+3. Only the component template is re-rendered
+4. The DOM is patched with the updated HTML
+
+Since django-unicorn does not rebuild the full Django template rendering
+pipeline for component updates, context processors are not executed again.
+
+### Force Render Behavior
+
+Setting `force_render = True` on a component or parent component triggers a
+template re-evaluation using the existing component state. It does **not**
+recreate the full Django `RequestContext` and does not re-run context processors.
+
+This is intentional and helps maintain performance by avoiding unnecessary
+recomputation and database queries.
+
+### Recommended Patterns
+
+If you need values from settings or global context to persist across component
+updates, consider one of the following approaches.
+
+#### Store Values in Component State
+
+Instead of relying on context processors, store values directly in the component:
+
+```python
+from django.conf import settings
+from django_unicorn.components import UnicornView
+
+
+class ExampleView(UnicornView):
+    my_flag = settings.MY_FLAG
+```
+
+#### Use Lifecycle Hooks
+
+If values must be refreshed periodically, update them during lifecycle events:
+
+```python
+def hydrate(self):
+    self.my_flag = settings.MY_FLAG
+```
+
+#### Pass Values Explicitly
+
+If using nested components, pass values through component parameters rather
+than relying on template context.
+
+### When to Use Context Processors
+
+Context processors are still useful for:
+
+* Initial page rendering
+* Global template values shared across many pages
+* Request-specific data (e.g., user, permissions)
+
+However, they should not be relied upon for reactive UI state inside components.
+
+### Performance Considerations
+
+Context processors run during template rendering and may execute database
+queries or other expensive operations. Automatically running them during every
+component update would negatively impact performance and network efficiency.
+
+For this reason, django-unicorn keeps component rendering separate from Django's
+request-level context processing.
+

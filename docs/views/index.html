@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -812,6 +818,15 @@
 </div>
 </section>
 </section>
+<section id="pickling-and-caching">
+<h2>Pickling and Caching<a class="headerlink" href="#pickling-and-caching" title="Link to this heading">¶</a></h2>
+<p>Components are pickled and cached for the duration of the AJAX request. This means that any instance variable on the component must be pickleable.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not store unpickleable objects (e.g. generators) on the component instance.</p>
+</div>
+<p>If you need to use an unpickleable object, either convert it to a pickleable type (e.g. convert a generator to a list) or re-initialize it within the method that needs it without storing it on <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+</section>
 </section>
 
         </article>
@@ -912,6 +927,7 @@
 <li><a class="reference internal" href="#safe">safe</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#pickling-and-caching">Pickling and Caching</a></li>
 </ul>
 </li>
 </ul>
@@ -923,7 +939,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

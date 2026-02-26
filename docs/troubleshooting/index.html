@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul class="current">
@@ -429,6 +435,33 @@
 </pre></div>
 </div>
 </section>
+<section id="tables-and-invalid-html">
+<h2>Tables and invalid HTML<a class="headerlink" href="#tables-and-invalid-html" title="Link to this heading">¶</a></h2>
+<p>Browsers are very strict about table structure (e.g. <code class="docutils literal notranslate"><span class="pre">&lt;tr&gt;</span></code> can only be a direct child of <code class="docutils literal notranslate"><span class="pre">&lt;tbody&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;thead&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;tfoot&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> is not allowed as a direct child of <code class="docutils literal notranslate"><span class="pre">&lt;tr&gt;</span></code>). If you have a component that renders a table row, unexpected behavior can occur because the browser will “foster parent” invalid elements out of the table structure before <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> can seemingly react to them.</p>
+<p>For example, this valid-looking component template will cause issues:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- invalid-table-row.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  {% if show_modal %}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  {% endif %}
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The browser will move the <code class="docutils literal notranslate"><span class="pre">div</span></code> out of the <code class="docutils literal notranslate"><span class="pre">tr</span></code> (and likely out of the <code class="docutils literal notranslate"><span class="pre">table</span></code> entirely), so when <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> tries to update the component, it will be confused by the missing element.</p>
+<p>To fix this, ensure that all content is inside a valid table element, like a <code class="docutils literal notranslate"><span class="pre">td</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- valid-table-row.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+    {% if show_modal %}
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {% endif %}
+  <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -489,6 +522,7 @@
 <li><a class="reference internal" href="#">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#disallowed-mime-type-error-on-windows">Disallowed MIME type error on Windows</a></li>
 <li><a class="reference internal" href="#missing-csrf-token-or-403-forbidden-errors">Missing CSRF token or 403 Forbidden errors</a></li>
+<li><a class="reference internal" href="#tables-and-invalid-html">Tables and invalid HTML</a></li>
 </ul>
 </li>
 </ul>
@@ -500,7 +534,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

@@ -122,6 +122,14 @@ Module Contents
 
 
 
+   .. py:method:: remove()
+
+      Remove this component's root element from the DOM and delete it from the
+      internal component store. Equivalent to calling
+      ``self.call("Unicorn.deleteComponent", self.component_id)``.
+
+
+
    .. py:method:: mount()
 
       Hook that gets called when the component is first created.

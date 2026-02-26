@@ -7,9 +7,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.django-unicorn.com/javascript/" />
 <meta property="og:site_name" content="Unicorn" />
-<meta property="og:description" content="Call JavaScript from View: To integrate with other JavaScript functions, view methods can call an arbitrary JavaScript function after it gets rendered. Trigger Model Update: Normally when a model e..." />
-<meta name="description" content="Call JavaScript from View: To integrate with other JavaScript functions, view methods can call an arbitrary JavaScript function after it gets rendered. Trigger Model Update: Normally when a model e..." />
-<link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Queue Requests" href="../queue-requests/"><link rel="prev" title="Messages" href="../messages/">
+<meta property="og:description" content="Call JavaScript from View: To integrate with other JavaScript functions, view methods can call an arbitrary JavaScript function after it gets rendered. Remove a Component: Call self.remove() from a..." />
+<meta name="description" content="Call JavaScript from View: To integrate with other JavaScript functions, view methods can call an arbitrary JavaScript function after it gets rendered. Remove a Component: Call self.remove() from a..." />
+<link rel="index" title="Index" href="../genindex/"><link rel="search" title="Search" href="../search/"><link rel="next" title="Queue Requests" href="../queue-requests/"><link rel="prev" title="Pagination" href="../pagination/">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
         <title>JavaScript Integration - Unicorn</title>
@@ -260,6 +260,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul class="current">
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -417,22 +423,86 @@
 </pre></div>
 </div>
 </section>
-<section id="trigger-model-update">
-<h2>Trigger Model Update<a class="headerlink" href="#trigger-model-update" title="Link to this heading">¶</a></h2>
-<p>Normally when a model element gets changed by a user it will trigger an event which <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> listens for (either <code class="docutils literal notranslate"><span class="pre">input</span></code> or <code class="docutils literal notranslate"><span class="pre">blur</span></code> depending on if it has a <code class="docutils literal notranslate"><span class="pre">lazy</span></code> modifier). However, when setting an element with JavaScript those events do not fire. <code class="docutils literal notranslate"><span class="pre">Unicorn.trigger()</span></code> provides a way to trigger that event from JavaScript manually.</p>
-<p>The first argument to <code class="docutils literal notranslate"><span class="pre">trigger</span></code> is the component name. The second argument is the value for the element’s <code class="docutils literal notranslate"><span class="pre">unicorn:key</span></code>.</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- trigger-model.html --&gt;</span>
-<span class="p">&lt;</span><span class="nt">input</span>
-  <span class="na">id</span><span class="o">=</span><span class="s">&quot;nameId&quot;</span>
-  <span class="na">unicorn:key</span><span class="o">=</span><span class="s">&quot;nameKey&quot;</span>
-  <span class="na">unicorn:model</span><span class="o">=</span><span class="s">&quot;name&quot;</span>
-  <span class="na">value</span><span class="o">=</span><span class="s">&quot;initial value&quot;</span>
-<span class="p">/&gt;</span>
+<section id="remove-a-component">
+<h2>Remove a Component<a class="headerlink" href="#remove-a-component" title="Link to this heading">¶</a></h2>
+<p>Call <code class="docutils literal notranslate"><span class="pre">self.remove()</span></code> from any view method to remove the component’s root element from the DOM. This is useful for list-item components (e.g. table rows or list items) that need to delete themselves without requiring a parent component to manage re-rendering.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># todo_item.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;nameId&quot;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;new value&quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">Unicorn</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">&quot;hello_world&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;nameKey&quot;</span><span class="p">);</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TodoItemView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># perform any server-side cleanup here</span>
+        <span class="n">TodoItem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">item_id</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- todo-item.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+  {{ item_id }}
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">unicorn:click</span><span class="o">=</span><span class="s">&quot;delete&quot;</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">self.remove()</span></code> is shorthand for <code class="docutils literal notranslate"><span class="pre">self.call(&quot;Unicorn.deleteComponent&quot;,</span> <span class="pre">self.component_id)</span></code>. After the server responds, the component’s root element is removed from the DOM and cleaned up from the internal component store.</p>
+</section>
+<section id="call-method-on-other-component">
+<h2>Call Method on Other Component<a class="headerlink" href="#call-method-on-other-component" title="Link to this heading">¶</a></h2>
+<p>From a component, it is possible to call a method on another component. This is useful when you want to trigger a refresh or an update on another component.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- compare-list.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- content --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare_list.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CompareListView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reload_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># do something</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- source-checkbox.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">unicorn:model</span><span class="o">=</span><span class="s">&quot;is_checked&quot;</span> <span class="na">unicorn:change</span><span class="o">=</span><span class="s">&quot;toggle_check_state&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># source_checkbox.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django_unicorn.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicornView</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SourceCheckboxView</span><span class="p">(</span><span class="n">UnicornView</span><span class="p">):</span>
+    <span class="n">is_checked</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">toggle_check_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_checked</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_checked</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;Unicorn.call&quot;</span><span class="p">,</span> <span class="s2">&quot;compare-list&quot;</span><span class="p">,</span> <span class="s2">&quot;reload_state&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first argument to <code class="docutils literal notranslate"><span class="pre">call</span></code> is the name of the JavaScript function to call, which is <code class="docutils literal notranslate"><span class="pre">Unicorn.call</span></code>. The second argument is the name (or key) of the component to call. The third argument is the name of the method to call on that component.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+## Trigger Model Update
+
+Normally when a model element gets changed by a user it will trigger an event which `Unicorn` listens for (either `input` or `blur` depending on if it has a `lazy` modifier). However, when setting an element with JavaScript those events do not fire. `Unicorn.trigger()` provides a way to trigger that event from JavaScript manually.
+
+The first argument to `trigger` is the component name. The second argument is the value for the element&#39;s `unicorn:key`.
+
+```html
+&lt;!-- trigger-model.html --&gt;
+&lt;input
+  id=&quot;nameId&quot;
+  unicorn:key=&quot;nameKey&quot;
+  unicorn:model=&quot;name&quot;
+  value=&quot;initial value&quot;
+/&gt;
+
+&lt;script&gt;
+  document.getElementById(&quot;nameId&quot;).value = &quot;new value&quot;;
+  Unicorn.trigger(&quot;hello_world&quot;, &quot;nameKey&quot;);
+&lt;/script&gt;
 </pre></div>
 </div>
 </section>
@@ -465,14 +535,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../messages/">
+          <a class="prev-page" href="../pagination/">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Messages</div>
+                <div class="title">Pagination</div>
                 
               </div>
             </a>
@@ -508,7 +578,8 @@
             <ul>
 <li><a class="reference internal" href="#">JavaScript Integration</a><ul>
 <li><a class="reference internal" href="#call-javascript-from-view">Call JavaScript from View</a></li>
-<li><a class="reference internal" href="#trigger-model-update">Trigger Model Update</a></li>
+<li><a class="reference internal" href="#remove-a-component">Remove a Component</a></li>
+<li><a class="reference internal" href="#call-method-on-other-component">Call Method on Other Component</a></li>
 <li><a class="reference internal" href="#dynamic-content">Dynamic Content</a></li>
 </ul>
 </li>
@@ -521,7 +592,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="../_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

@@ -27,9 +27,13 @@ Module Contents
    :returns: The generated checksum.
 
 
-.. py:function:: dicts_equal(dictionary_one: dict, dictionary_two: dict) -> bool
+.. py:function:: parse_meta(meta_string: str) -> tuple[str, str, str]
 
-   Return True if all keys and values are the same between two dictionaries.
+   Parses a consolidated metadata string into its component parts.
+
+   :param meta_string: The consolidated string, e.g. "checksum:hash:epoch".
+
+   :returns: A tuple of (checksum, hash, epoch).
 
 
 .. py:function:: get_method_arguments(func) -> list[str]

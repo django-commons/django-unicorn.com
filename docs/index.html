@@ -260,6 +260,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started/">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components/">Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
@@ -281,6 +282,7 @@
 <li class="toctree-l1"><a class="reference internal" href="polling/">Polling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visibility/">Visibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="messages/">Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pagination/">Pagination</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -292,6 +294,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cli/">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings/">Settings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="table-limitations/">Table Rendering Limitations</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Info</span></p>
 <ul>
@@ -401,6 +407,8 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 <p>Want to add some component-based magic to your front-end, but don’t need the overhead of a complete JavaScript front-end framework? <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> revolutionizes the way your users interact with your Django app! With <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code>, you can create stunningly spiffy pages without ever leaving Python or your beloved Django codebase.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> is a reactive component framework that enhances your Django views by seamlessly making AJAX calls in the background and dynamically updates the HTML DOM. It’s like magic, but better! <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> is leading the charge in bringing a component-based developer experience to Django. Join the <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> community today and unlock the power of reactivity!</p>
 <p style="align: center; padding: 0 10px 10px 0;">
@@ -408,6 +416,69 @@
     <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.svg" width="201px">
   </a>
 </p>
+<hr class="docutils" />
+<section id="incremental-adoption-no-full-migration-required">
+<h2>Incremental Adoption — No Full Migration Required<a class="headerlink" href="#incremental-adoption-no-full-migration-required" title="Link to this heading">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You do <strong>NOT</strong> need to migrate your entire page or application to use Unicorn.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unicorn is designed for <strong>progressive enhancement</strong>.<br />
+You can introduce it into an existing Django project one small component at a time.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Many developers assume reactive component frameworks require:</p>
+<ul class="simple">
+<li><p>Rewriting entire pages</p></li>
+<li><p>Moving to an API-driven architecture</p></li>
+<li><p>Converting everything into components</p></li>
+<li><p>Adopting a SPA-style workflow</p></li>
+</ul>
+<p><strong>Unicorn requires none of that.</strong></p>
+</div>
+<p>Unicorn works alongside traditional Django views and templates. You can start
+with a single interactive element — such as:</p>
+<ul class="simple">
+<li><p>A live-search input</p></li>
+<li><p>A dropdown</p></li>
+<li><p>A modal</p></li>
+<li><p>A counter</p></li>
+<li><p>A form with validation</p></li>
+<li><p>A small dashboard widget</p></li>
+</ul>
+<p>while keeping the rest of your page completely unchanged.</p>
+<hr class="docutils" />
+<section id="example-enhancing-just-one-part-of-a-template">
+<h3>Example: Enhancing Just One Part of a Template<a class="headerlink" href="#example-enhancing-just-one-part-of-a-template" title="Link to this heading">¶</a></h3>
+<p>Your existing Django template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Products<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+{% for product in products %}
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ product.name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+{% endfor %}
+</pre></div>
+</div>
+<p>Now enhance just one piece with Unicorn:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Products<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+{% unicorn &#39;product-search&#39; %}
+
+{% for product in products %}
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ product.name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+{% endfor %}
+</pre></div>
+</div>
+<p>That’s it.</p>
+<ul class="simple">
+<li><p>No SPA</p></li>
+<li><p>No routing changes</p></li>
+<li><p>No large refactor</p></li>
+</ul>
+<p>Unicorn allows gradual adoption. Start small and expand only where it makes sense.</p>
+<hr class="docutils" />
 <p>Here are a few reasons to consider <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code>.</p>
 <ol class="arabic simple">
 <li><p><strong>Reactive Components</strong>: With <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code>, you can create reactive components that dynamically update the HTML DOM without the need for complex JavaScript. This makes it easier to build interactive web pages and enhances the user experience.</p></li>
@@ -416,6 +487,8 @@
 <li><p><strong>Improved Performance</strong>: By using AJAX calls to update the DOM, <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> reduces the need for full page reloads, which can result in improved performance and faster load times.</p></li>
 <li><p><strong>Familiarity</strong>: With <code class="docutils literal notranslate"><span class="pre">Unicorn</span></code>, you don’t need to learn a complicated front-end frameworks to create fancy interactive components. Instead, you can use the familiar Django syntax and templates to build your front-end components.</p></li>
 </ol>
+</section>
+</section>
 <section id="related-projects">
 <h2>Related projects<a class="headerlink" href="#related-projects" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Unicorn</span></code> stands on the shoulders of giants, in particular <a class="reference external" href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> which is integral for merging DOM changes.</p>
@@ -573,6 +646,10 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#incremental-adoption-no-full-migration-required">Incremental Adoption — No Full Migration Required</a><ul>
+<li><a class="reference internal" href="#example-enhancing-just-one-part-of-a-template">Example: Enhancing Just One Part of a Template</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#related-projects">Related projects</a><ul>
 <li><a class="reference internal" href="#inspirational-projects-in-other-languages">Inspirational projects in other languages</a></li>
 <li><a class="reference internal" href="#full-stack-framework-python-packages">Full-stack framework Python packages</a><ul>
@@ -594,7 +671,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=e3d116f3"></script>
+</div><script src="_static/documentation_options.js?v=8cf8fc1f"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
