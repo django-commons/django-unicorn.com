@@ -366,7 +366,7 @@ wheels = [
 
 [[package]]
 name = "django-unicorn"
-version = "0.65.2"
+version = "0.67.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cachetools" },
@@ -377,9 +377,9 @@ dependencies = [
     { name = "orjson" },
     { name = "shortuuid" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/bc/64/f3f2d9502d5739c4bede9e744dc8f15d32c8c21de836cee54ba035636665/django_unicorn-0.65.2.tar.gz", hash = "sha256:315428139fa1df2dd2a27ca560fbf1603de6aa0359772607c3ab067c9d2f3ed7", size = 463612, upload-time = "2026-02-13T21:01:17.528Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/88/02/c37dd08c64018b1e9e1b949691ea6f6123f06e6be2887595d1e058f6076a/django_unicorn-0.67.0.tar.gz", hash = "sha256:930dcf41d300614fbf9f198d2b985bbfd51fbdf125894c1813dcedd13dd5a918", size = 508715, upload-time = "2026-03-07T20:54:44.16Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0d/0b/2b8e01acb55083c1c0e63899d9535be401e47c95f0a3712ae65c6f316da3/django_unicorn-0.65.2-py3-none-any.whl", hash = "sha256:8be9de5e4106cff388a7d4bcc40e5bdc1dc42bcdbe38af3e8a962c12fdacea82", size = 101313, upload-time = "2026-02-13T21:01:15.923Z" },
+    { url = "https://files.pythonhosted.org/packages/d1/2f/da8189638907cd250fb6ffc5d1600a964a400c5784f2a0db8373eb48c4e5/django_unicorn-0.67.0-py3-none-any.whl", hash = "sha256:7149b7dc7ae06d61c8f7d1931241f873cd18d92d21f82072931bd9d300fba2c1", size = 109468, upload-time = "2026-03-07T20:54:42.552Z" },
 ]
 
 [[package]]
